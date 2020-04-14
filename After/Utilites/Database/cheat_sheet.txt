@@ -1,0 +1,24 @@
+    ////////////////////////////////////////
+   //         After by SnegirSoft        //
+  //                                    //
+ //  File: cheat_sheet.txt             //
+////////////////////////////////////////
+
+Шпаргалка по формату хранения данных.
+
+ENTITY ("data\\entity\\<entity>.dat")
+	<id>
+	<maxHealth>
+	<maxOxygen>
+	<oxygenSpeed>
+	<oxygenRegenerationSpeed>
+	<damageResist:strike>
+	<damageResist:cut>
+	<damageResist:pierce>
+	<damageResist:poison>
+	<damageResist:radiation>
+	<damageResist:suffocation>
+	<damageResist:burn>
+	<walkSpeed>
+	<runSpeed>
+	<strength>

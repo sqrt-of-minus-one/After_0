@@ -4,6 +4,20 @@
  //  File: StructsEnums.h              //
 ////////////////////////////////////////
 
+#pragma once
+
+enum E_Direction
+{
+	F,	//Вперёд
+	FR,	//Вперёд и вправо
+	R,	//И так далее...
+	BR,
+	B,
+	BL,
+	L,
+	FL
+};
+
 enum E_ClothesType //Типы одежды
 {
 	HAT,		//Шапка

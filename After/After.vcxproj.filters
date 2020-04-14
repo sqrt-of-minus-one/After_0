@@ -5,23 +5,51 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Utilites">
+      <UniqueIdentifier>{9b61cd83-47cb-4672-bf59-406c5e448626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{d7de8ed4-440f-4c6b-8a1b-d4f777326412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilites\Database">
+      <UniqueIdentifier>{1ab7fb70-15be-4dc8-bc1d-771ee734f6d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utilites\Database\Database.cpp">
+      <Filter>Source Files\Utilites\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StructsEnums.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Utilites\StructsEnums.h">
+      <Filter>Source Files\Utilites</Filter>
     </ClInclude>
+    <ClInclude Include="Entity\Entity.h">
+      <Filter>Source Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilites\Database\DB_Types.h">
+      <Filter>Source Files\Utilites\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilites\Database\Database.h">
+      <Filter>Source Files\Utilites\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilites\Constants.h">
+      <Filter>Source Files\Utilites</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Utilites\Database\cheat_sheet.txt">
+      <Filter>Source Files\Utilites\Database</Filter>
+    </Text>
   </ItemGroup>
 </Project>

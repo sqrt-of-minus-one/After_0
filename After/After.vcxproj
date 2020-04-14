@@ -164,9 +164,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp" />
+    <ClCompile Include="Entity\Entity.cpp" />
+    <ClCompile Include="Utilites\Database\Database.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StructsEnums.h" />
+    <ClInclude Include="Entity\Entity.h" />
+    <ClInclude Include="Utilites\Constants.h" />
+    <ClInclude Include="Utilites\Database\Database.h" />
+    <ClInclude Include="Utilites\Database\DB_Types.h" />
+    <ClInclude Include="Utilites\StructsEnums.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Utilites\Database\cheat_sheet.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
