@@ -165,10 +165,12 @@
   <ItemGroup>
     <ClCompile Include="After.cpp" />
     <ClCompile Include="Entity\Entity.cpp" />
+    <ClCompile Include="Entity\Last\Last.cpp" />
     <ClCompile Include="Utilites\Database\Database.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity\Entity.h" />
+    <ClInclude Include="Entity\Last\Last.h" />
     <ClInclude Include="Utilites\Constants.h" />
     <ClInclude Include="Utilites\Database\Database.h" />
     <ClInclude Include="Utilites\Database\DB_Types.h" />

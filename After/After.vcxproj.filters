@@ -18,6 +18,9 @@
     <Filter Include="Source Files\Utilites\Database">
       <UniqueIdentifier>{1ab7fb70-15be-4dc8-bc1d-771ee734f6d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Last">
+      <UniqueIdentifier>{46a8c1f4-fb47-42ba-956b-824b78f73481}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
@@ -28,6 +31,9 @@
     </ClCompile>
     <ClCompile Include="Entity\Entity.cpp">
       <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Last\Last.cpp">
+      <Filter>Source Files\Entity\Last</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="Utilites\Constants.h">
       <Filter>Source Files\Utilites</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Last\Last.h">
+      <Filter>Source Files\Entity\Last</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@
 using sf::Sprite;
 using std::string;
 
+//Класс сущности
 class Entity
 {
 protected:
@@ -21,7 +22,9 @@ protected:
 	string textid; //Текстовый идентификатор
 	DBS_EntityData* entityData; //Постоянные свойства сущности
 
-	float poison; //До окончания действия яда
+	float poisonTime; //До окончания действия яда
+	float stoneTime; //До окончания действия окаменения
+	float webTime; //До распутывания из паутины
 
 	float health; //Здоровье
 	float oxygen; //Кислород
@@ -37,12 +40,12 @@ protected:
 
 	Sprite sprite; //Спрайт
 
-	void move(); //Перемещение
+	void move(const float& delta); //Перемещение
 
 	void death(const E_DamageType damageType, const Entity* murderer);
 	void deathDrop();
 
-	void calculateStatis();
+	void calculateStats(const float& delta);
 public:
 	Entity(const int id, const string textid);
 
@@ -53,4 +56,5 @@ public:
 	void unstone();
 	void unweb();
 
+	void tick(const float delta);
 };
