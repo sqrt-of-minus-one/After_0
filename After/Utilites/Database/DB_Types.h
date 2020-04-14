@@ -7,6 +7,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../StructsEnums.h"
 
 using namespace sf;
@@ -24,7 +25,10 @@ struct DBS_EntityData
 
 	float strength; //Наносимый урон
 
-//	Audio* damageSound; //Звуки при получении урона
-//	Audio* deathSound; //Звуки при смерти
-//	Audio* entitySound; //Просто звуки
+	Sound* damageSounds; //Звуки при получении урона
+	Sound* deathSounds; //Звуки при смерти
+	Sound* entitySounds; //Просто звуки
+	int damageSoundsCount; //Количество звуков при получении урона
+	int deathSoundsCount; //Количество звуков при смерти
+	int entitySoundsCount; //Количество просто звуков
 };

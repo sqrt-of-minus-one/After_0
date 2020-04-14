@@ -6,6 +6,10 @@
 
 #include "Entity.h"
 
+void Entity::move()
+{
+}
+
 Entity::Entity(const int id, const string textid)
 {
 	this->id = id;

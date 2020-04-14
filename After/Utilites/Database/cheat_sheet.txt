@@ -22,3 +22,6 @@ ENTITY ("data\\entity\\<entity>.dat")
 	<walkSpeed>
 	<runSpeed>
 	<strength>
+	<damageSoundsCount>
+	<deathSoundsCount>
+	<entitySoundsCount>
