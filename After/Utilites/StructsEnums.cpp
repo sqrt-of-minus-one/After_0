@@ -5,9 +5,6 @@
 ////////////////////////////////////////
 
 #include "StructsEnums.h"
-#include <string>
-
-using std::string;
 
 E_Direction stoDirection(const string in)
 {

@@ -7,10 +7,6 @@
 #pragma once
 
 #include "../Entity.h"
-#include "../../Utilites/Database/Database.h"
-#include <string>
-
-using std::string;
 
 class Mob : public Entity
 {

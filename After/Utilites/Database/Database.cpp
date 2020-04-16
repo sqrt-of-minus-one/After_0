@@ -12,13 +12,14 @@ using std::runtime_error;
 using std::out_of_range;
 using std::to_string;
 using sf::SoundBuffer;
-using sf::Sound;
 
 DBS_EntityData* Database::entityData[ENTITY_COUNT] = { NULL };
 DBS_MobData* Database::mobData[MOB_COUNT] = { NULL };
+DBS_AnimalData* Database::animalData[MOB_COUNT] = { NULL };
 
 int Database::entityLoaded[ENTITY_COUNT] = { 0 };
 int Database::mobLoaded[MOB_COUNT] = { 0 };
+int Database::animalLoaded[MOB_COUNT] = { 0 };
 
 void Database::loadEntity(const int id, const string textid, ifstream& file)
 {
@@ -36,7 +37,13 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 	file >> entityData[id]->damageResist.burn;
 	file >> entityData[id]->walkSpeed;
 	file >> entityData[id]->runSpeed;
-	file >> entityData[id]->strength;
+	file >> entityData[id]->meleeAttackDamage;
+	file >> entityData[id]->meleeAttackRadius;
+
+	string tmp;
+	file >> tmp;
+	entityData[id]->meleeDamageType = stoDamageType(tmp);
+
 	file >> entityData[id]->damageSoundsCount;
 	file >> entityData[id]->deathSoundsCount;
 	file >> entityData[id]->entitySoundsCount;
@@ -71,6 +78,7 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 void Database::loadMob(const int id, const string textid, ifstream& file)
 {
 	mobData[id] = new DBS_MobData;
+	mobData[id]->id = id;
 	file >> mobData[id]->drops;
 	mobData[id]->drop = new S_Drop[mobData[id]->drops];
 	for (int i = 0; i < mobData[id]->drops; i++)
@@ -86,20 +94,24 @@ void Database::loadMob(const int id, const string textid, ifstream& file)
 	file >> mobData[id]->experience;
 	file >> mobData[id]->canAttackMelee;
 	file >> mobData[id]->canAttackLong;
-	file >> mobData[id]->meleeAttackRadius;
 	file >> mobData[id]->longAttackRadius;
-	file >> mobData[id]->meleeAttackDamage;
 	file >> mobData[id]->longAttackDamage;
 
 	string tmp;
-	file >> tmp;
-	mobData[id]->meleeDamageType = stoDamageType(tmp);
 	file >> tmp;
 	mobData[id]->longDamageType = stoDamageType(tmp);
 
 	file >> mobData[id]->canPoisonAttack;
 	file >> mobData[id]->viewRadius;
 	file >> mobData[id]->purseRadius;
+	entityLoaded[id]++;
+}
+
+void Database::loadAnimal(const int id, const string textid, ifstream& file)
+{
+	animalData[id] = new DBS_AnimalData;
+	animalData[id]->id = id;
+	file >> animalData[id]->mutantTextid;
 	entityLoaded[id]++;
 }
 
@@ -130,6 +142,20 @@ void Database::removeMob(const int id)
 	if (mobLoaded[id] == 0)
 	{
 		delete mobData[id]->drop;
+		delete mobData[id];
+	}
+}
+
+void Database::removeAnimal(const int id)
+{
+	if (id < 0 || id >= ANIMAL_COUNT)
+	{
+		throw out_of_range("Animal with id " + to_string(id) + " dosn`t exist");
+	}
+	animalLoaded[id]--;
+	if (animalLoaded[id] == 0)
+	{
+		delete animalData[id];
 	}
 }
 
@@ -166,4 +192,21 @@ DBS_MobData* Database::getMobData(const string textid)
 	}
 	file.close();
 	return mobData[id];
+}
+
+DBS_AnimalData* Database::getAnimalData(const string textid)
+{
+	int id;
+	ifstream file(DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT);
+	if (!file.is_open())
+	{
+		throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT + "\"");
+	}
+	file >> id;
+	if (animalData[id] == NULL)
+	{
+		loadAnimal(id, textid, file);
+	}
+	file.close();
+	return animalData[id];
 }

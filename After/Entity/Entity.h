@@ -6,14 +6,10 @@
 
 #pragma once
 
-#include <string>
-#include <SFML/Graphics.hpp>
-#include "../Utilites/StructsEnums.h"
 #include "../Utilites/Database/Database.h"
 
 using sf::Sprite;
 using sf::RenderWindow;
-using std::string;
 
 //Класс сущности
 class Entity

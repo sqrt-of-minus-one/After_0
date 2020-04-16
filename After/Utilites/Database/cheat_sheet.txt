@@ -21,7 +21,9 @@ ENTITY ("data\\entity\\<entity>.dat")
 	<damageResist:burn>
 	<walkSpeed>
 	<runSpeed>
-	<strength>
+	<meleeAttackDamage>
+	<meleeAttackRadius>
+	<meleeDamageType>
 	<damageSoundsCount>
 	<deathSoundsCount>
 	<entitySoundsCount>
@@ -35,12 +37,13 @@ MOB ("data\\entity\\mob\\<mob>.dat")
 	<experience>
 	<canAttackMelee>
 	<canAttackLong>
-	<meleeAttackRadius>
 	<longAttackRadius>
-	<meleeAttackDamage>
 	<longAttackDamage>
-	<meleeDamageType>
 	<longDamageType>
 	<canPoisonAttack>
 	<viewRadius>
 	<purseRadius>
+
+ANIMAL ("data\\entity\\mob\\animal\\<animal>.dat")
+	<id>
+	<mutantTextid>

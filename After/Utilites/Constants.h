@@ -12,9 +12,11 @@ const string DEBUG = "debug";
 
 const string ENTITY = "entity\\";
 const string MOB = "mob\\";
+const string ANIMAL = "animal\\";
 
-const int ENTITY_COUNT = 1;
-const int MOB_COUNT = 1;
+const int ENTITY_COUNT = 10;
+const int MOB_COUNT = 10;
+const int ANIMAL_COUNT = 10;
 
 const string DATA_PATH = "res\\data\\";
 const string SOUNDS_PATH = "res\\sounds\\";

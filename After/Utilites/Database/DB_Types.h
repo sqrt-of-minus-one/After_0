@@ -10,7 +10,8 @@
 #include <SFML/Audio.hpp>
 #include "../StructsEnums.h"
 
-using namespace sf;
+using sf::Sound;
+using sf::Texture;
 
 struct DBS_EntityData
 {
@@ -23,7 +24,9 @@ struct DBS_EntityData
 	float walkSpeed; //Скорость ходьбы
 	float runSpeed; //Скорость бега
 
-	float strength; //Наносимый урон
+	float meleeAttackDamage; //Наносимый урон
+	int meleeAttackRadius; //Радиус атаки
+	E_DamageType meleeDamageType; //Тип наносимого урона
 
 	Sound* damageSounds; //Звуки при получении урона
 	Sound* deathSounds; //Звуки при смерти
@@ -37,18 +40,22 @@ struct DBS_EntityData
 
 struct DBS_MobData
 {
+	int id; //Номер моба
 	int drops; //Количество элементов в массиве дропа
 	S_Drop* drop; //Массив дропа
 	float experience; //Получаемый после убийства опыт
 	bool canAttackMelee; //Может ли атаковать вблизи
 	bool canAttackLong; //Может ли атаковать издалека
-	int meleeAttackRadius; //Радиус ближнего боя
 	int longAttackRadius; //Радиус дальнего боя
-	float meleeAttackDamage; //Урон в ближнем бою
 	float longAttackDamage; //Урон в дальнем бою
-	E_DamageType meleeDamageType; //Тип урона в ближнем бою
 	E_DamageType longDamageType; //Тип урона в дальнем бою
 	bool canPoisonAttack; //Отравляет ли при атаке
 	int viewRadius; //Радиус обзора
 	int purseRadius; //Радиус преследования
+};
+
+struct DBS_AnimalData
+{
+	int id; //Номер животного
+	string mutantTextid; //Текстовый ID соответствующего мутанта
 };
