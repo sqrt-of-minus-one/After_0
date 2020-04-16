@@ -25,3 +25,22 @@ ENTITY ("data\\entity\\<entity>.dat")
 	<damageSoundsCount>
 	<deathSoundsCount>
 	<entitySoundsCount>
+
+MOB ("data\\entity\\mob\\<mob>.dat")
+	<id>
+	<drops> (кол-во)
+		<drop1 id> <drop1 min> <drop1 max> <drop1 chance>
+		<drop2 id> <drop2 min> <drop2 max> <drop2 chance>
+		...
+	<experience>
+	<canAttackMelee>
+	<canAttackLong>
+	<meleeAttackRadius>
+	<longAttackRadius>
+	<meleeAttackDamage>
+	<longAttackDamage>
+	<meleeDamageType>
+	<longDamageType>
+	<canPoisonAttack>
+	<viewRadius>
+	<purseRadius>

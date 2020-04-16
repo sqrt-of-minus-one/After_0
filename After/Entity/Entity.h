@@ -12,6 +12,7 @@
 #include "../Utilites/Database/Database.h"
 
 using sf::Sprite;
+using sf::RenderWindow;
 using std::string;
 
 //Класс сущности
@@ -55,6 +56,8 @@ public:
 	void web();
 	void unstone();
 	void unweb();
+
+	void draw(RenderWindow& window);
 
 	void tick(const float delta);
 };

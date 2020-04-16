@@ -6,6 +6,10 @@
 
 #pragma once
 
+#include <string>
+
+using std::string;
+
 enum E_Direction
 {
 	F,	//Вперёд
@@ -58,3 +62,7 @@ struct S_Drop //Дроп
 	int max;		//Максимальное количество
 	float chance;	//Вероятность выпадения
 };
+
+E_Direction stoDirection(const string in);
+E_ClothesType stoClothesType(const string in);
+E_DamageType stoDamageType(const string in);

@@ -53,6 +53,10 @@ void Entity::unweb()
 {
 }
 
+void Entity::draw(RenderWindow& window)
+{
+}
+
 void Entity::tick(const float delta)
 {
 	move(delta);
