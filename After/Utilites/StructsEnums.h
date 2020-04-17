@@ -57,10 +57,15 @@ struct S_DamageResist //Сопротивляемость различным видам урона
 
 struct S_Drop //Дроп
 {
-//	Item* item;		//Выпадающий предмет
+	string item;		//Текстовый идентификатор выпадающего предмета
 	int min;		//Минимальное количество
 	int max;		//Максимальное количество
 	float chance;	//Вероятность выпадения
+};
+
+struct S_Message //Инопланетное сообщение
+{
+
 };
 
 E_Direction stoDirection(const string in);

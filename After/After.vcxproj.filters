@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Entity\Mob\Animal\Wolf">
       <UniqueIdentifier>{31cdca51-71b5-42f1-8aad-214404d3791b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Mob\Mutant">
+      <UniqueIdentifier>{7ea06dd1-2dc8-47e5-a5ef-6a58fdd24e1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
@@ -55,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="Entity\Mob\Animal\Wolf\Wolf.cpp">
       <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Mob\Mutant\Mutant.cpp">
+      <Filter>Source Files\Entity\Mob\Mutant</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="Entity\Mob\Animal\Wolf\Wolf.h">
       <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Mob\Mutant\Mutant.h">
+      <Filter>Source Files\Entity\Mob\Mutant</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
