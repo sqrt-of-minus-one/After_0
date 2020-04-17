@@ -167,6 +167,7 @@
     <ClCompile Include="Entity\Entity.cpp" />
     <ClCompile Include="Entity\Last\Last.cpp" />
     <ClCompile Include="Entity\Mob\Animal\Animal.cpp" />
+    <ClCompile Include="Entity\Mob\Animal\Wolf\Wolf.cpp" />
     <ClCompile Include="Entity\Mob\Mob.cpp" />
     <ClCompile Include="Utilites\Database\Database.cpp" />
     <ClCompile Include="Utilites\StructsEnums.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Entity\Entity.h" />
     <ClInclude Include="Entity\Last\Last.h" />
     <ClInclude Include="Entity\Mob\Animal\Animal.h" />
+    <ClInclude Include="Entity\Mob\Animal\Wolf\Wolf.h" />
     <ClInclude Include="Entity\Mob\Mob.h" />
     <ClInclude Include="Utilites\Constants.h" />
     <ClInclude Include="Utilites\Database\Database.h" />

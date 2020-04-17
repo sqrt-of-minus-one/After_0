@@ -13,6 +13,7 @@ const string DEBUG = "debug";
 const string ENTITY = "entity\\";
 const string MOB = "mob\\";
 const string ANIMAL = "animal\\";
+const string EXTRA = "extra\\";
 
 const int ENTITY_COUNT = 10;
 const int MOB_COUNT = 10;

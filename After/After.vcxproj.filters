@@ -27,6 +27,9 @@
     <Filter Include="Source Files\Entity\Mob\Animal">
       <UniqueIdentifier>{02e01afc-4f1f-45cd-8252-aa625ffe5b62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Mob\Animal\Wolf">
+      <UniqueIdentifier>{31cdca51-71b5-42f1-8aad-214404d3791b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
@@ -49,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="Entity\Mob\Animal\Animal.cpp">
       <Filter>Source Files\Entity\Mob\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Mob\Animal\Wolf\Wolf.cpp">
+      <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="Entity\Mob\Animal\Animal.h">
       <Filter>Source Files\Entity\Mob\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Mob\Animal\Wolf\Wolf.h">
+      <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

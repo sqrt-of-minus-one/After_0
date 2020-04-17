@@ -19,20 +19,25 @@ private:
 	static DBS_EntityData* entityData[ENTITY_COUNT];
 	static DBS_MobData* mobData[MOB_COUNT];
 	static DBS_AnimalData* animalData[ANIMAL_COUNT];
+	static DBS_WolfData* wolfData;
 
 	static int entityLoaded[ENTITY_COUNT];
 	static int mobLoaded[MOB_COUNT];
 	static int animalLoaded[ANIMAL_COUNT];
+	static int wolfLoaded;
 
 	static void loadEntity(const int id, const string textid, ifstream& file);
 	static void loadMob(const int id, const string textid, ifstream& file);
 	static void loadAnimal(const int id, const string textid, ifstream& file);
+	static void loadWolf(ifstream& file);
 public:
 	static void removeEntity(const int id);
 	static void removeMob(const int id);
 	static void removeAnimal(const int id);
+	static void removeWolf();
 
 	static DBS_EntityData* getEntityData(const string textid);
 	static DBS_MobData* getMobData(const string textid);
 	static DBS_AnimalData* getAnimalData(const string textid);
+	static DBS_WolfData* getWolfData();
 };

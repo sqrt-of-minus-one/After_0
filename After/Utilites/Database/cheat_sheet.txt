@@ -8,6 +8,7 @@
 
 ENTITY ("data\\entity\\<entity>.dat")
 	<id>
+	<isUnloaded>
 	<maxHealth>
 	<maxOxygen>
 	<oxygenSpeed>

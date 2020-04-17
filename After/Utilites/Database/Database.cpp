@@ -16,14 +16,17 @@ using sf::SoundBuffer;
 DBS_EntityData* Database::entityData[ENTITY_COUNT] = { NULL };
 DBS_MobData* Database::mobData[MOB_COUNT] = { NULL };
 DBS_AnimalData* Database::animalData[MOB_COUNT] = { NULL };
+DBS_WolfData* Database::wolfData = NULL;
 
 int Database::entityLoaded[ENTITY_COUNT] = { 0 };
 int Database::mobLoaded[MOB_COUNT] = { 0 };
 int Database::animalLoaded[MOB_COUNT] = { 0 };
+int Database::wolfLoaded = 0;
 
 void Database::loadEntity(const int id, const string textid, ifstream& file)
 {
 	entityData[id] = new DBS_EntityData;
+	file >> entityData[id]->isUnloaded;
 	file >> entityData[id]->maxHealth;
 	file >> entityData[id]->maxOxygen;
 	file >> entityData[id]->oxygenSpeed;
@@ -104,7 +107,7 @@ void Database::loadMob(const int id, const string textid, ifstream& file)
 	file >> mobData[id]->canPoisonAttack;
 	file >> mobData[id]->viewRadius;
 	file >> mobData[id]->purseRadius;
-	entityLoaded[id]++;
+	mobLoaded[id]++;
 }
 
 void Database::loadAnimal(const int id, const string textid, ifstream& file)
@@ -112,7 +115,15 @@ void Database::loadAnimal(const int id, const string textid, ifstream& file)
 	animalData[id] = new DBS_AnimalData;
 	animalData[id]->id = id;
 	file >> animalData[id]->mutantTextid;
-	entityLoaded[id]++;
+	animalLoaded[id]++;
+}
+
+void Database::loadWolf(ifstream& file)
+{
+	wolfData = new DBS_WolfData;
+	file >> wolfData->maxHunger;
+	file >> wolfData->hungerSpeed;
+	wolfLoaded++;
 }
 
 
@@ -129,6 +140,7 @@ void Database::removeEntity(const int id)
 		delete entityData[id]->deathSounds;
 		delete entityData[id]->entitySounds;
 		delete entityData[id];
+		entityData[id] = NULL;
 	}
 }
 
@@ -143,6 +155,7 @@ void Database::removeMob(const int id)
 	{
 		delete mobData[id]->drop;
 		delete mobData[id];
+		mobData[id] = NULL;
 	}
 }
 
@@ -156,6 +169,17 @@ void Database::removeAnimal(const int id)
 	if (animalLoaded[id] == 0)
 	{
 		delete animalData[id];
+		animalData[id] = NULL;
+	}
+}
+
+void Database::removeWolf()
+{
+	wolfLoaded--;
+	if (wolfLoaded == 0)
+	{
+		delete wolfData;
+		wolfData = NULL;
 	}
 }
 
@@ -209,4 +233,19 @@ DBS_AnimalData* Database::getAnimalData(const string textid)
 	}
 	file.close();
 	return animalData[id];
+}
+
+DBS_WolfData* Database::getWolfData()
+{
+	if (wolfData == NULL)
+	{
+		ifstream file(DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT);
+		if (!file.is_open())
+		{
+			throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT + "\"");
+		}
+		loadWolf(file);
+		file.close();
+	}
+	return wolfData;
 }

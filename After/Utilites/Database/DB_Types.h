@@ -15,6 +15,8 @@ using sf::Texture;
 
 struct DBS_EntityData
 {
+	bool isUnloaded; //Выгружается ли из памяти, когда игрок уходит далеко
+
 	float maxHealth; //Максимальное количество здоровья
 	float maxOxygen; //Максимальный запас кислорода
 	float oxygenSpeed; //Скорость расходования кислорода
@@ -58,4 +60,10 @@ struct DBS_AnimalData
 {
 	int id; //Номер животного
 	string mutantTextid; //Текстовый ID соответствующего мутанта
+};
+
+struct DBS_WolfData
+{
+	float maxHunger;
+	float hungerSpeed;
 };
