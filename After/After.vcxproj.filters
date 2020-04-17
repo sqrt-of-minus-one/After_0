@@ -33,6 +33,12 @@
     <Filter Include="Source Files\Entity\Mob\Mutant">
       <UniqueIdentifier>{7ea06dd1-2dc8-47e5-a5ef-6a58fdd24e1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Mob\Alien">
+      <UniqueIdentifier>{ba42465d-e63d-4149-a5b5-bff0d0f36b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Mob\Robot">
+      <UniqueIdentifier>{5d616c45-84be-486d-89a4-dd09027a49f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
@@ -61,6 +67,12 @@
     </ClCompile>
     <ClCompile Include="Entity\Mob\Mutant\Mutant.cpp">
       <Filter>Source Files\Entity\Mob\Mutant</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Mob\Alien\Alien.cpp">
+      <Filter>Source Files\Entity\Mob\Alien</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\Mob\Robot\Robot.cpp">
+      <Filter>Source Files\Entity\Mob\Robot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +105,12 @@
     </ClInclude>
     <ClInclude Include="Entity\Mob\Mutant\Mutant.h">
       <Filter>Source Files\Entity\Mob\Mutant</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Mob\Alien\Alien.h">
+      <Filter>Source Files\Entity\Mob\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity\Mob\Robot\Robot.h">
+      <Filter>Source Files\Entity\Mob\Robot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

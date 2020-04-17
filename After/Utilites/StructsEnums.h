@@ -63,7 +63,7 @@ struct S_Drop //Дроп
 	float chance;	//Вероятность выпадения
 };
 
-struct S_Message //Инопланетное сообщение
+struct S_Message //Телепатическое сообщение
 {
 
 };
