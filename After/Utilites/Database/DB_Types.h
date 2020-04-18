@@ -37,7 +37,16 @@ struct DBS_EntityData
 	int deathSoundsCount; //Количество звуков при смерти
 	int entitySoundsCount; //Количество просто звуков
 
-	Texture texture; //Текстура сущности
+	Texture texture_f; //Текстура сущности, вперёд
+	Texture texture_fr; //Вперёд и вправо
+	Texture texture_r; //Вправо
+	Texture texture_br; //И т. д.
+	Texture texture_b;
+	Texture texture_bl;
+	Texture texture_l;
+	Texture texture_fl;
+	int height; //Высота спрайта
+	int width; //Ширина спрайта
 };
 
 struct DBS_MobData

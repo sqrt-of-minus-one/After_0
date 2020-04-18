@@ -28,6 +28,8 @@ ENTITY ("data\\entity\\<entity>.dat")
 	<damageSoundsCount>
 	<deathSoundsCount>
 	<entitySoundsCount>
+	<height>
+	<width>
 
 MOB ("data\\entity\\mob\\<mob>.dat")
 	<id>

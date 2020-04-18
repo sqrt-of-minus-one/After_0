@@ -31,5 +31,9 @@ protected:
 
 	void deathDrop(); //Выпадение вещей после смерти
 public:
+	Last();
+
 	void weak(); //Наложение эффекта слабости
+
+	void tick(const float delta); //Каждый кадр
 };

@@ -39,6 +39,9 @@
     <Filter Include="Source Files\Entity\Mob\Robot">
       <UniqueIdentifier>{5d616c45-84be-486d-89a4-dd09027a49f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{97294432-c39b-4a46-83b3-6ae0bf81ce85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="After.cpp">
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="Entity\Mob\Robot\Robot.cpp">
       <Filter>Source Files\Entity\Mob\Robot</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Controls.cpp">
+      <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="Entity\Mob\Robot\Robot.h">
       <Filter>Source Files\Entity\Mob\Robot</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Controls.h">
+      <Filter>Source Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

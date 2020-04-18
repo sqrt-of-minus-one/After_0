@@ -26,9 +26,6 @@ protected:
 	float health; //Здоровье
 	float oxygen; //Кислород
 
-	float walkSpeed; //Скорость ходьбы
-	float runSpeed; //Скорость бега
-
 	bool isWalking; //Идёт ли
 	bool isRunning; //Бежит ли
 	bool needStairs; //Требуется ли лестница для перемещения между слоями
@@ -39,21 +36,21 @@ protected:
 
 	void move(const float& delta); //Перемещение
 
-	void death(const E_DamageType damageType, const Entity* murderer);
-	void deathDrop();
+	void death(const E_DamageType damageType, const Entity* murderer); //Смерть
+	void deathDrop(); //Выпадение предметов после смерти
 
-	void calculateStats(const float& delta);
+	void calculateStats(const float& delta); //Вычисление показателей
 public:
 	Entity(const int id, const string textid);
 
-	void getDamage(const float damage, const E_DamageType damageType, const Entity* attacker);
-	void getPoison(const int duration);
-	void stone();
-	void web();
-	void unstone();
-	void unweb();
+	void getDamage(const float damage, const E_DamageType damageType, const Entity* attacker); //Получение урона
+	void getPoison(const int duration); //Получение эффекта отравления
+	void stone(); //Превращение в камень
+	void web(); //«Запаутинивание»
+	void unstone(); //Освобождение от камня
+	void unweb(); //Освобождение от паутины
 
-	void draw(RenderWindow& window);
+	void draw(RenderWindow& window); //Отображение спрайта на экране
 
-	void tick(const float delta);
+	void tick(const float delta); //Каждый кадр
 };

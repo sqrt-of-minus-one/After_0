@@ -71,10 +71,43 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 		buffer->loadFromFile(SOUNDS_PATH + ENTITY + textid + "_" + "entity" + "_" + to_string(i) + SOUNDS_EXT);
 		entityData[id]->entitySounds[i].setBuffer(*buffer);
 	}
-	if (!entityData[id]->texture.loadFromFile(TEXTURES_PATH + ENTITY + textid + TEXTURES_EXT))
+
+	file >> entityData[id]->height;
+	file >> entityData[id]->width;
+
+	if (!entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT))
 	{
-		entityData[id]->texture.loadFromFile(TEXTURES_PATH + DEBUG + TEXTURES_EXT);
+		entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
+	if (!entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+	if (!entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT))
+	{
+		entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
+	}
+
 	entityLoaded[id]++;
 }
 

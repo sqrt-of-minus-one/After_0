@@ -172,6 +172,7 @@
     <ClCompile Include="Entity\Mob\Mob.cpp" />
     <ClCompile Include="Entity\Mob\Mutant\Mutant.cpp" />
     <ClCompile Include="Entity\Mob\Robot\Robot.cpp" />
+    <ClCompile Include="System\Controls.cpp" />
     <ClCompile Include="Utilites\Database\Database.cpp" />
     <ClCompile Include="Utilites\StructsEnums.cpp" />
   </ItemGroup>
@@ -184,6 +185,7 @@
     <ClInclude Include="Entity\Mob\Mob.h" />
     <ClInclude Include="Entity\Mob\Mutant\Mutant.h" />
     <ClInclude Include="Entity\Mob\Robot\Robot.h" />
+    <ClInclude Include="System\Controls.h" />
     <ClInclude Include="Utilites\Constants.h" />
     <ClInclude Include="Utilites\Database\Database.h" />
     <ClInclude Include="Utilites\Database\DB_Types.h" />
