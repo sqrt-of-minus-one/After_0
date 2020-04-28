@@ -1,0 +1,4 @@
+28.04.20 13:18:48: Information: program is run
+
+28.04.20 13:19:24: Information: program is closed
+

@@ -10,7 +10,7 @@ using std::string;
 
 const float SQRT2 = 0.7071;
 
-const float CHANGE_FRAME = 500.0;
+const float CHANGE_FRAME = 250.0;
 const float FRAMES_COUNT = 4;
 const int HEIGHT = 64;
 const int WIDTH = 64;
@@ -27,6 +27,14 @@ const int STONE = 8;
 const int WEB = 9;
 const int SPECIAL = 10;
 
+const string INFO = "Information: ";
+const string WARNING = "Warning: ";
+const string ERROR = "An error occured: ";
+const string START = "program is run";
+const string CLOSE = "program is closed";
+const string NO_FILE = "couldn`t find file: ";
+
+const string LOG = "log";
 const string DEBUG = "debug";
 
 const string DATA_PATH = "res\\data\\";
@@ -45,6 +53,7 @@ const int ENTITY_COUNT = 10;
 const int MOB_COUNT = 10;
 const int ANIMAL_COUNT = 10;
 
+const string TEXT_EXT = ".txt";
 const string DATA_EXT = ".dat";
 const string SOUNDS_EXT = ".wav";
 const string TEXTURES_EXT = ".png";

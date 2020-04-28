@@ -80,6 +80,9 @@
     <ClCompile Include="System\Controls.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="Utilites\Log.cpp">
+      <Filter>Source Files\Utilites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilites\StructsEnums.h">
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="System\Controls.h">
       <Filter>Source Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilites\Log.h">
+      <Filter>Source Files\Utilites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

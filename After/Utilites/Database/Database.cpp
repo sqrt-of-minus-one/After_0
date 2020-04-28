@@ -5,6 +5,7 @@
 ////////////////////////////////////////
 
 #include "Database.h"
+#include "../Log.h"
 #include <stdexcept>
 
 using std::stod;
@@ -56,19 +57,31 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 	for (int i = 0; i < entityData[id]->damageSoundsCount; i++)
 	{
 		SoundBuffer* buffer = new SoundBuffer;
-		buffer->loadFromFile(SOUNDS_PATH + ENTITY + textid + "_" + "damage" + "_" + to_string(i) + SOUNDS_EXT);
+		string path = SOUNDS_PATH + ENTITY + textid + "_" + "damage" + "_" + to_string(i) + SOUNDS_EXT;
+		if (!buffer->loadFromFile(path))
+		{
+			Log::w(NO_FILE + path);
+		}
 		entityData[id]->damageSounds[i].setBuffer(*buffer);
 	}
 	for (int i = 0; i < entityData[id]->deathSoundsCount; i++)
 	{
 		SoundBuffer* buffer = new SoundBuffer;
-		buffer->loadFromFile(SOUNDS_PATH + ENTITY + textid + "_" + "death" + "_" + to_string(i) + SOUNDS_EXT);
+		string path = SOUNDS_PATH + ENTITY + textid + "_" + "death" + "_" + to_string(i) + SOUNDS_EXT;
+		if (!buffer->loadFromFile(path))
+		{
+			Log::w(NO_FILE + path);
+		}
 		entityData[id]->deathSounds[i].setBuffer(*buffer);
 	}
 	for (int i = 0; i < entityData[id]->entitySoundsCount; i++)
 	{
 		SoundBuffer* buffer = new SoundBuffer;
-		buffer->loadFromFile(SOUNDS_PATH + ENTITY + textid + "_" + "entity" + "_" + to_string(i) + SOUNDS_EXT);
+		string path = SOUNDS_PATH + ENTITY + textid + "_" + "entity" + "_" + to_string(i) + SOUNDS_EXT;
+		if (!buffer->loadFromFile(path))
+		{
+			Log::w(NO_FILE + path);
+		}
 		entityData[id]->entitySounds[i].setBuffer(*buffer);
 	}
 
@@ -77,34 +90,42 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 
 	if (!entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT);
 		entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT);
 		entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT);
 		entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT);
 		entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT);
 		entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT);
 		entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT);
 		entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT))
 	{
+		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT);
 		entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 
@@ -223,7 +244,9 @@ DBS_EntityData* Database::getEntityData(const string textid)
 	ifstream file(DATA_PATH + ENTITY + textid + DATA_EXT);
 	if (!file.is_open())
 	{
-		throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + textid + DATA_EXT + "\"");
+		string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + textid + DATA_EXT + "\"";
+		Log::e(error);
+		throw runtime_error(error);
 	}
 	file >> id;
 	if (entityData[id] == NULL)
@@ -240,7 +263,9 @@ DBS_MobData* Database::getMobData(const string textid)
 	ifstream file(DATA_PATH + ENTITY + MOB + textid + DATA_EXT);
 	if (!file.is_open())
 	{
-		throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + textid + DATA_EXT + "\"");
+		string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + textid + DATA_EXT + "\"";
+		Log::e(error);
+		throw runtime_error(error);
 	}
 	file >> id;
 	if (mobData[id] == NULL)
@@ -257,7 +282,9 @@ DBS_AnimalData* Database::getAnimalData(const string textid)
 	ifstream file(DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT);
 	if (!file.is_open())
 	{
-		throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT + "\"");
+		string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT + "\"";
+		Log::e(error);
+		throw runtime_error(error);
 	}
 	file >> id;
 	if (animalData[id] == NULL)
@@ -275,7 +302,9 @@ DBS_WolfData* Database::getWolfData()
 		ifstream file(DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT);
 		if (!file.is_open())
 		{
-			throw runtime_error("Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT + "\"");
+			string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT + "\"";
+			Log::e(error);
+			throw runtime_error(error);
 		}
 		loadWolf(file);
 		file.close();
