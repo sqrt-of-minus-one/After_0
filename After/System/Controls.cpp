@@ -16,6 +16,8 @@ Keyboard::Key S_Controls::forward = Keyboard::W;
 Keyboard::Key S_Controls::back = Keyboard::S;
 Keyboard::Key S_Controls::left = Keyboard::A;
 Keyboard::Key S_Controls::right = Keyboard::D;
+bool S_Controls::invertZoom = false;
+bool S_Controls::invertMouseButtons = false;
 
 void S_Controls::load()
 {
@@ -41,6 +43,10 @@ void S_Controls::load()
 		file >> in;
 		right = static_cast<Keyboard::Key>(in);
 
+		file >> invertZoom;
+
+		file >> invertMouseButtons;
+
 		file.close();
 	}
 }
@@ -51,6 +57,8 @@ void S_Controls::defaults()
 	back = Keyboard::S;
 	left = Keyboard::A;
 	right = Keyboard::D;
+	invertZoom = false;
+	invertMouseButtons = false;
 }
 
 void S_Controls::save()
@@ -66,7 +74,9 @@ void S_Controls::save()
 		static_cast<int>(forward) << endl <<
 		static_cast<int>(back) << endl <<
 		static_cast<int>(left) << endl <<
-		static_cast<int>(right);
+		static_cast<int>(right) << endl <<
+		invertZoom << endl <<
+		invertMouseButtons;
 
 	file.close();
 }

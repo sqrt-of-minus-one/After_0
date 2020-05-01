@@ -14,6 +14,9 @@ const float CHANGE_FRAME = 250.0;
 const float FRAMES_COUNT = 4;
 const int HEIGHT = 64;
 const int WIDTH = 64;
+const float ZOOM_STEP = 1.25;
+const int MIN_ZOOM = 1;
+const int MAX_ZOOM = 10;
 
 const int STAY = 0;
 const int WALK = 1;
@@ -30,6 +33,7 @@ const int SPECIAL = 10;
 const string INFO = "Information: ";
 const string WARNING = "Warning: ";
 const string ERROR = "An error occured: ";
+const string REPORT = ". Please, report this error to the developers by email jenyaiu90@gmail.com";
 const string START = "program is run";
 const string CLOSE = "program is closed";
 const string NO_FILE = "couldn`t find file: ";
