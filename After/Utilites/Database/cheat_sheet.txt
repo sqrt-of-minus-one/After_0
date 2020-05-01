@@ -6,6 +6,14 @@
 
 Шпаргалка по формату хранения данных.
 
+CONTROLS ("options\\controls.dat")
+	<forward>
+	<back>
+	<left>
+	<right>
+	<invertZoom>
+	<invertMouseButtons>
+
 ENTITY ("data\\entity\\<entity>.dat")
 	<id>
 	<isUnloaded>

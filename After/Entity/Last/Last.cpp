@@ -8,6 +8,7 @@
 #include "../../System/Controls.h"
 
 using sf::IntRect;
+using sf::View;
 
 Last::Last() : Entity(0, "last")
 {
@@ -114,4 +115,10 @@ void Last::tick(const float delta)
 	}
 
 	Entity::tick(delta);
+}
+
+void Last::getCenter(float& x, float& y)
+{
+	x = sprite.getPosition().x + entityData->width * WIDTH / 2;
+	y = sprite.getPosition().y + entityData->height * HEIGHT / 2;
 }

@@ -48,7 +48,7 @@ void Log::w(const string& msg)
 
 void Log::e(const string& msg)
 {
-	log(ERROR + msg);
+	log(ERROR + msg + REPORT);
 }
 
 void Log::clear()

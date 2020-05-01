@@ -36,4 +36,6 @@ public:
 	void weak(); //Наложение эффекта слабости
 
 	void tick(const float delta); //Каждый кадр
+
+	void getCenter(float& x, float& y); //Получить координаты центра
 };
