@@ -12,6 +12,19 @@ using sf::View;
 
 Last::Last() : Entity(0, "last")
 {
+	maxHunger = 40;
+	hunger = maxHunger;
+	hungeringSpeed = 0;
+
+	maxEnergy = 40;
+	energy = maxEnergy;
+	energySpeed = 0.0045;
+	energyRegenerationSpeed = 0.003;
+
+	weakness = maxEnergy;
+	weaknessSpeed = 0.00005;
+
+	weakTime = 0;
 }
 
 void Last::calculateStats()
@@ -28,6 +41,7 @@ void Last::weak()
 
 void Last::tick(const float delta)
 {
+	isRunning = false;
 	isWalking = true;
 	if (Keyboard::isKeyPressed(S_Controls::forward))
 	{
@@ -114,6 +128,40 @@ void Last::tick(const float delta)
 		isWalking = false;
 	}
 
+	static bool run_control = true;
+
+	if (energy <= 0)
+	{
+		run_control = false;
+	}
+	else if (!run_control && energy > maxEnergy / 10)
+	{
+		run_control = true;
+	}
+
+	if (isWalking && Keyboard::isKeyPressed(S_Controls::run) && run_control)
+	{
+		isRunning = true;
+	}
+
+	if (weakness > 0)
+	{
+		weakness -= weaknessSpeed * delta;
+	}
+
+	if (energy > weakness)
+	{
+		energy = weakness;
+	}
+	if (isRunning)
+	{
+		energy -= energySpeed * delta;
+	}
+	else if (energy < weakness)
+	{
+		energy += energyRegenerationSpeed * delta;
+	}
+
 	Entity::tick(delta);
 }
 
@@ -121,4 +169,16 @@ void Last::getCenter(float& x, float& y)
 {
 	x = sprite.getPosition().x + entityData->width * WIDTH / 2;
 	y = sprite.getPosition().y + entityData->height * HEIGHT / 2;
+<<<<<<< HEAD
+=======
+}
+
+void Last::getStats(float& health, float& energy, float& weakness, float& oxygen, float& hunger)
+{
+	health = this->health;
+	energy = this->energy;
+	weakness = this->weakness;
+	oxygen = this->oxygen;
+	hunger = this->hunger;
+>>>>>>> develop
 }

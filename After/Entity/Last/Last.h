@@ -38,4 +38,8 @@ public:
 	void tick(const float delta); //Каждый кадр
 
 	void getCenter(float& x, float& y); //Получить координаты центра
+<<<<<<< HEAD
+=======
+	void getStats(float& health, float& energy, float& weakness, float& oxygene, float& hunger); //Получить показатели
+>>>>>>> develop
 };

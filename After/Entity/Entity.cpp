@@ -161,9 +161,17 @@ void Entity::tick(const float delta)
 		rect.top = STAY * HEIGHT * entityData->height;
 		sprite.setTextureRect(rect);
 	}
-	else if (isWalking && !isRunning && rect.top != WALK * HEIGHT * entityData->height)
+	else if (isWalking)
 	{
-		rect.top = WALK * HEIGHT * entityData->height;
-		sprite.setTextureRect(rect);
+		if (!isRunning && rect.top != WALK * HEIGHT * entityData->height)
+		{
+			rect.top = WALK * HEIGHT * entityData->height;
+			sprite.setTextureRect(rect);
+		}
+		else if (isRunning && rect.top != RUN * HEIGHT * entityData->height)
+		{
+			rect.top = RUN * HEIGHT * entityData->height;
+			sprite.setTextureRect(rect);
+		}
 	}
 }
