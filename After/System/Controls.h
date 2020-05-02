@@ -16,6 +16,7 @@ struct S_Controls
 	static Keyboard::Key back;
 	static Keyboard::Key left;
 	static Keyboard::Key right;
+	static Keyboard::Key run;
 	static bool invertZoom;
 	static bool invertMouseButtons;
 

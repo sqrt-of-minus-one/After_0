@@ -12,6 +12,7 @@
 
 using namespace sf;
 using std::cout;
+using std::endl;
 using std::runtime_error;
 
 void check_debug()
@@ -57,6 +58,7 @@ int main()
 
 	RenderWindow window(VideoMode(800, 450), "After");
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 	View view = window.getView();
 	int zoom = 1;
 
@@ -90,7 +92,15 @@ int main()
 			}
 
 			std::system("cls");
-			std::cout << "FPS: " << 1000 / delta << std::endl << view.getSize().x << " " << view.getSize().y;
+
+			float h, e, w, o, g;
+			last->getStats(h, e, w, o, g);
+			cout << "FPS: " << 1000 / delta << endl <<
+				"Health: " << h << endl <<
+				"Energy: " << e << endl <<
+				"Weakness: " << w << endl <<
+				"Oxygen: " << o << endl <<
+				"Hunger: " << g;
 			window.clear();
 
 			float x, y;
@@ -100,6 +110,19 @@ int main()
 
 			last->tick(delta);
 			last->draw(window);
+
+			//Tmp
+			CircleShape c[5][5];
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					c[i][j].setPosition(i * 500, j * 500);
+					c[i][j].setRadius(5);
+					window.draw(c[i][j]);
+				}
+			}
+			//End tmp
 
 			window.display();
 			

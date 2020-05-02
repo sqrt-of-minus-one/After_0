@@ -11,6 +11,7 @@ CONTROLS ("options\\controls.dat")
 	<back>
 	<left>
 	<right>
+	<run>
 	<invertZoom>
 	<invertMouseButtons>
 
