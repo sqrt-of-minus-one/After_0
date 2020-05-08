@@ -1,11 +1,11 @@
-0
-0
-2
-0
-0
-0
-0
-Strike
-0
-20
-30
+id: 0
+drop: 0
+experience: 2
+canAttackMelee: 0
+canAttackLong: 0
+longAttackRadius: 0
+longAttackDamage: 0
+longAttackType: Strike
+canPoisonAttack: 0
+viewRadius: 20
+purseRadius: 30

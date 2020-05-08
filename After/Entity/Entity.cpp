@@ -174,4 +174,17 @@ void Entity::tick(const float delta)
 			sprite.setTextureRect(rect);
 		}
 	}
+
+	if (entityData->entitySoundsCount > 0)
+	{
+		static float audio_time = 0;
+		static float audio_mtime = (rand() % 40 + 20) * 1000;
+		audio_time += delta;
+		if (audio_time >= audio_mtime)
+		{
+			audio_time = 0;
+			audio_mtime = (rand() % 40 + 20) * 1000;
+			entityData->entitySounds[rand() % entityData->entitySoundsCount].play();
+		}
+	}
 }

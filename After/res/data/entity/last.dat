@@ -1,23 +1,23 @@
-0
-0
-40
-40
-0.01
-0.005
-0
-0
-0
-0
-0
-0
-0
-0.2
-0.4
-1
-1
-Cut
-0
-0
-0
-2
-1
+id: 0
+isUnloaded: 0
+maxHealth: 40
+maxOxygen: 40
+oxygenSpeed: 0.01
+oxygenRegenerationSpeed: 0.005
+damageResist:strike: 0
+damageResist:cut: 0
+damageResist:pierce: 0
+damageResist:poison: 0
+damageResist:radiation: 0
+damageResist:suffocation: 0
+damageResist:burn: 0
+walkSpeed: 0.2
+runSpeed: 0.4
+meleeAttackDamage: 1
+meleeAttackRadius: 1
+meleeDamageType: Cut
+damageSoundsCount: 0
+deathSoundsCount: 0
+entitySoundsCount: 0
+height: 2
+width: 1

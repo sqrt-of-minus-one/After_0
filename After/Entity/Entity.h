@@ -7,9 +7,12 @@
 #pragma once
 
 #include "../Utilites/Database/Database.h"
+#include <random>
+#include <ctime>
 
 using sf::Sprite;
 using sf::RenderWindow;
+using std::rand;
 
 //Класс сущности
 class Entity abstract

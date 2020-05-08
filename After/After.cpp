@@ -14,6 +14,8 @@
 using namespace sf;
 using std::cout;
 using std::endl;
+using std::srand;
+using std::time;
 using std::runtime_error;
 
 void check_debug()
@@ -53,6 +55,7 @@ void check_debug()
 
 int main()
 {
+	srand(time(NULL));
 	Log::clear();
 	Log::i(START);
 	check_debug();
