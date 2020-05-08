@@ -12,7 +12,7 @@ using sf::Sprite;
 using sf::RenderWindow;
 
 //Класс сущности
-class Entity
+class Entity abstract
 {
 protected:
 	int id; //Числовой идентификатор

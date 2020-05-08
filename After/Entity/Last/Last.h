@@ -27,7 +27,7 @@ protected:
 //	PlayerInventory* inventory; //Инвентарь
 //	Skills* skills; //Навыки
 
-	void calculateStats(); //Вычисление показателей
+	void calculateStats(const float delta); //Вычисление показателей
 
 	void deathDrop(); //Выпадение вещей после смерти
 public:

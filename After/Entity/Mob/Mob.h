@@ -8,7 +8,7 @@
 
 #include "../Entity.h"
 
-class Mob : public Entity
+class Mob abstract : public Entity
 {
 protected:
 	DBS_MobData* mobData; //Постоянные свойства моба
@@ -18,6 +18,10 @@ protected:
 
 	void attackMelee(Entity* attacked); //Ближняя атака
 	void attackLong(Entity* attacked); //Дальняя атака
+	
+	void control(); //Управление действиями моба
 public:
 	Mob(const int id, const string textid);
+
+	void tick(const float delta);
 };
