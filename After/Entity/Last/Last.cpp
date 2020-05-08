@@ -27,8 +27,25 @@ Last::Last() : Entity(0, "last")
 	weakTime = 0;
 }
 
-void Last::calculateStats()
+void Last::calculateStats(const float delta)
 {
+	if (weakness > 0)
+	{
+		weakness -= weaknessSpeed * delta;
+	}
+
+	if (energy > weakness)
+	{
+		energy = weakness;
+	}
+	if (isRunning)
+	{
+		energy -= energySpeed * delta;
+	}
+	else if (energy < weakness)
+	{
+		energy += energyRegenerationSpeed * delta;
+	}
 }
 
 void Last::deathDrop()
@@ -142,24 +159,6 @@ void Last::tick(const float delta)
 	if (isWalking && Keyboard::isKeyPressed(S_Controls::run) && run_control)
 	{
 		isRunning = true;
-	}
-
-	if (weakness > 0)
-	{
-		weakness -= weaknessSpeed * delta;
-	}
-
-	if (energy > weakness)
-	{
-		energy = weakness;
-	}
-	if (isRunning)
-	{
-		energy -= energySpeed * delta;
-	}
-	else if (energy < weakness)
-	{
-		energy += energyRegenerationSpeed * delta;
 	}
 
 	Entity::tick(delta);

@@ -6,6 +6,7 @@
 
 #include "System/Controls.h"
 #include "Entity/Last/Last.h"
+#include "Entity/Mob/Animal/Animal.h"
 #include "Utilites/Log.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -66,6 +67,7 @@ int main()
 	int zoom = 1;
 
 	Last* last = new Last;
+	Entity* entity = new Animal(1, "cow");
 	Clock clock;
 	try
 	{
@@ -117,6 +119,9 @@ int main()
 
 			last->tick(delta);
 			last->draw(window);
+
+			static_cast<Animal*>(entity)->tick(delta);
+			entity->draw(window);
 
 			//Tmp
 			CircleShape c[5][5];
