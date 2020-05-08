@@ -188,3 +188,8 @@ void Entity::tick(const float delta)
 		}
 	}
 }
+
+E_EntityType Entity::getType()
+{
+	return entityData->type;
+}

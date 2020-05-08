@@ -17,6 +17,7 @@ CONTROLS ("options\\controls.dat")
 
 ENTITY ("data\\entity\\<entity>.dat")
 	<id>
+	<entityType>
 	<isUnloaded>
 	<maxHealth>
 	<maxOxygen>

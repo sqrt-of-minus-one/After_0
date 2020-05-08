@@ -5,9 +5,8 @@
 ////////////////////////////////////////
 
 #include "System/Controls.h"
-#include "Entity/Last/Last.h"
-#include "Entity/Mob/Animal/Animal.h"
 #include "Utilites/Log.h"
+#include "System/EntityController.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -63,11 +62,11 @@ int main()
 	RenderWindow window(VideoMode(800, 450), "After");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
-	View view = window.getView();
 	int zoom = 1;
 
-	Last* last = new Last;
-	Entity* entity = new Animal(1, "cow");
+	EntityController controller(window);
+	controller.add(*new Animal(1, "cow"));
+
 	Clock clock;
 	try
 	{
@@ -90,34 +89,15 @@ int main()
 					if (!(zoom == MAX_ZOOM && wheelDelta > 0 || zoom == MIN_ZOOM && wheelDelta < 0))
 					{
 						zoom += wheelDelta;
-						view.zoom(wheelDelta > 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
-						window.setView(view);
+						controller.zoom(wheelDelta > 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
 					}
 				}
 			}
 
 			std::system("cls");
-
-			float h, e, w, o, g;
-			last->getStats(h, e, w, o, g);
-			cout << "FPS: " << 1000 / delta << endl <<
-				"Health: " << h << endl <<
-				"Energy: " << e << endl <<
-				"Weakness: " << w << endl <<
-				"Oxygen: " << o << endl <<
-				"Hunger: " << g;
 			window.clear();
 
-			float x, y;
-			last->getCenter(x, y);
-			view.setCenter(x, y);
-			window.setView(view);
-
-			last->tick(delta);
-			last->draw(window);
-
-			static_cast<Animal*>(entity)->tick(delta);
-			entity->draw(window);
+			controller.tick(delta, window);
 
 			//Tmp
 			CircleShape c[5][5];

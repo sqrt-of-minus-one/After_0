@@ -26,8 +26,12 @@ int Database::wolfLoaded = 0;
 
 void Database::loadEntity(const int id, const string textid, ifstream& file)
 {
-	string useless;
+	string useless, tmp;
 	entityData[id] = new DBS_EntityData;
+
+	file >> useless >> tmp;
+	entityData[id]->type = stoEntityType(tmp);
+
 	file >> useless >> entityData[id]->isUnloaded;
 	file >> useless >> entityData[id]->maxHealth;
 	file >> useless >> entityData[id]->maxOxygen;
@@ -45,7 +49,6 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 	file >> useless >> entityData[id]->meleeAttackDamage;
 	file >> useless >> entityData[id]->meleeAttackRadius;
 
-	string tmp;
 	file >> useless >> tmp;
 	entityData[id]->meleeDamageType = stoDamageType(tmp);
 

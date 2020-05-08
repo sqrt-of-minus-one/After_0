@@ -161,6 +161,7 @@ void Last::tick(const float delta)
 		isRunning = true;
 	}
 
+	calculateStats(delta);
 	Entity::tick(delta);
 }
 

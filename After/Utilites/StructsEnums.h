@@ -10,6 +10,20 @@
 
 using std::string;
 
+enum E_EntityType //Тип сущности
+{
+	ENTITY_LAST,	//Игрок
+
+	ENTITY_ALIEN,	//Инопланетянин
+
+	ENTITY_ANIMAL,	//Животное
+	ENTITY_WOLF,	//Животное: волк
+
+	ENTITY_MUTANT,	//Мутант
+
+	ENTITY_ROBOT	//Робот
+};
+
 enum E_Direction
 {
 	F,	//Вперёд
@@ -68,6 +82,7 @@ struct S_Message //Телепатическое сообщение
 
 };
 
-E_Direction stoDirection(const string in);
-E_ClothesType stoClothesType(const string in);
-E_DamageType stoDamageType(const string in);
+E_Direction stoDirection(const string& in);
+E_ClothesType stoClothesType(const string& in);
+E_DamageType stoDamageType(const string& in);
+E_EntityType stoEntityType(const string& str);

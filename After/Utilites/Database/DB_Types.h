@@ -15,6 +15,8 @@ using sf::Texture;
 
 struct DBS_EntityData
 {
+	E_EntityType type; //Тип сущности
+
 	bool isUnloaded; //Выгружается ли из памяти, когда игрок уходит далеко
 
 	float maxHealth; //Максимальное количество здоровья

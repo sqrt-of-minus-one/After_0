@@ -83,6 +83,9 @@
     <ClCompile Include="Utilites\Log.cpp">
       <Filter>Source Files\Utilites</Filter>
     </ClCompile>
+    <ClCompile Include="System\EntityController.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilites\StructsEnums.h">
@@ -126,6 +129,9 @@
     </ClInclude>
     <ClInclude Include="Utilites\Log.h">
       <Filter>Source Files\Utilites</Filter>
+    </ClInclude>
+    <ClInclude Include="System\EntityController.h">
+      <Filter>Source Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,7 @@ using std::rand;
 //Класс сущности
 class Entity abstract
 {
+
 protected:
 	int id; //Числовой идентификатор
 	string textid; //Текстовый идентификатор
@@ -32,6 +33,8 @@ protected:
 	bool isWalking; //Идёт ли
 	bool isRunning; //Бежит ли
 	bool needStairs; //Требуется ли лестница для перемещения между слоями
+
+	bool isDead; //Мёртв ли
 
 	E_Direction direction; //Направление
 
@@ -56,4 +59,6 @@ public:
 	void draw(RenderWindow& window); //Отображение спрайта на экране
 
 	void tick(const float delta); //Каждый кадр
+
+	E_EntityType getType(); //Возвращает тип сущности
 };
