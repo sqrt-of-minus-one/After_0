@@ -14,6 +14,8 @@ Entity::Entity(const int id, const string textid)
 	this->textid = textid;
 	entityData = Database::getEntityData(textid);
 
+	z = 0;
+
 	poisonTime = 0.0;
 	stoneTime = 0.0;
 	webTime = 0.0;
@@ -33,6 +35,8 @@ Entity::Entity(const int id, const string textid)
 
 void Entity::move(const float& delta)
 {
+	dx = 0;
+	dy = 0;
 	if (isWalking)
 	{
 		float x, y;
@@ -89,6 +93,8 @@ void Entity::move(const float& delta)
 		}
 		}
 		sprite.move(x, y);
+		dx = x;
+		dy = y;
 	}
 }
 
@@ -192,4 +198,14 @@ void Entity::tick(const float delta)
 E_EntityType Entity::getType()
 {
 	return entityData->type;
+}
+
+Vector2f Entity::getDxy()
+{
+	return Vector2f(dx, dy);
+}
+
+Vector2f Entity::getCoordinates()
+{
+	return sprite.getPosition();
 }

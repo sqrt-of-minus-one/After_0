@@ -25,7 +25,9 @@ protected:
 	sf::View view;
 public:
 	EntityController(RenderWindow& window);
+	~EntityController();
 	void tick(const float& delta, RenderWindow& window);
-	void add(Entity& entity);
 	void zoom(const float& factor);
+	void add(Entity& entity);
+	void remove(const int& num);
 };

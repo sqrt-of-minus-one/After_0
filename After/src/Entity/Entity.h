@@ -12,6 +12,7 @@
 
 using sf::Sprite;
 using sf::RenderWindow;
+using sf::Vector2f;
 using std::rand;
 
 //Класс сущности
@@ -22,6 +23,10 @@ protected:
 	int id; //Числовой идентификатор
 	string textid; //Текстовый идентификатор
 	DBS_EntityData* entityData; //Постоянные свойства сущности
+
+	int z; //Координата по оси Z
+	float dx; //Изменение координаты X за последний кадр
+	float dy; //Изменение координаты Y за последний кадр
 
 	float poisonTime; //До окончания действия яда
 	float stoneTime; //До окончания действия окаменения
@@ -61,4 +66,6 @@ public:
 	void tick(const float delta); //Каждый кадр
 
 	E_EntityType getType(); //Возвращает тип сущности
+	Vector2f getDxy(); //Возвращает изменение координат за последний кадр
+	Vector2f getCoordinates(); //Возвращает координаты
 };

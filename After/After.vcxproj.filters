@@ -9,134 +9,152 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Utilites">
-      <UniqueIdentifier>{9b61cd83-47cb-4672-bf59-406c5e448626}</UniqueIdentifier>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{2e9caf55-d4f6-4522-abf7-2d30c42fe62b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity">
+    <Filter Include="Source Files\src\Entity">
       <UniqueIdentifier>{d7de8ed4-440f-4c6b-8a1b-d4f777326412}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Utilites\Database">
-      <UniqueIdentifier>{1ab7fb70-15be-4dc8-bc1d-771ee734f6d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Last">
+    <Filter Include="Source Files\src\Entity\Last">
       <UniqueIdentifier>{46a8c1f4-fb47-42ba-956b-824b78f73481}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob">
+    <Filter Include="Source Files\src\Entity\Mob">
       <UniqueIdentifier>{d5de7af7-0fa6-4798-a66a-2e38ba534f1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob\Animal">
+    <Filter Include="Source Files\src\Entity\Mob\Animal">
       <UniqueIdentifier>{02e01afc-4f1f-45cd-8252-aa625ffe5b62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob\Animal\Wolf">
+    <Filter Include="Source Files\src\Entity\Mob\Animal\Wolf">
       <UniqueIdentifier>{31cdca51-71b5-42f1-8aad-214404d3791b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob\Mutant">
+    <Filter Include="Source Files\src\Entity\Mob\Mutant">
       <UniqueIdentifier>{7ea06dd1-2dc8-47e5-a5ef-6a58fdd24e1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob\Alien">
+    <Filter Include="Source Files\src\Entity\Mob\Alien">
       <UniqueIdentifier>{ba42465d-e63d-4149-a5b5-bff0d0f36b44}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Mob\Robot">
+    <Filter Include="Source Files\src\Entity\Mob\Robot">
       <UniqueIdentifier>{5d616c45-84be-486d-89a4-dd09027a49f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\System">
+    <Filter Include="Source Files\src\System">
       <UniqueIdentifier>{97294432-c39b-4a46-83b3-6ae0bf81ce85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Utilites">
+      <UniqueIdentifier>{9b61cd83-47cb-4672-bf59-406c5e448626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Utilites\Database">
+      <UniqueIdentifier>{1ab7fb70-15be-4dc8-bc1d-771ee734f6d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\World">
+      <UniqueIdentifier>{3867fede-c9d9-437c-ad68-0411e07d193b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="After.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Utilites\Database\Database.cpp">
+      <Filter>Source Files\src\Utilites\Database</Filter>
     </ClCompile>
-    <ClCompile Include="Utilites\Database\Database.cpp">
-      <Filter>Source Files\Utilites\Database</Filter>
+    <ClCompile Include="src\Entity\Entity.cpp">
+      <Filter>Source Files\src\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Entity.cpp">
-      <Filter>Source Files\Entity</Filter>
+    <ClCompile Include="src\Entity\Last\Last.cpp">
+      <Filter>Source Files\src\Entity\Last</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Last\Last.cpp">
-      <Filter>Source Files\Entity\Last</Filter>
+    <ClCompile Include="src\Entity\Mob\Mob.cpp">
+      <Filter>Source Files\src\Entity\Mob</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Mob.cpp">
-      <Filter>Source Files\Entity\Mob</Filter>
+    <ClCompile Include="src\Utilites\StructsEnums.cpp">
+      <Filter>Source Files\src\Utilites</Filter>
     </ClCompile>
-    <ClCompile Include="Utilites\StructsEnums.cpp">
-      <Filter>Source Files\Utilites</Filter>
+    <ClCompile Include="src\Entity\Mob\Animal\Animal.cpp">
+      <Filter>Source Files\src\Entity\Mob\Animal</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Animal\Animal.cpp">
-      <Filter>Source Files\Entity\Mob\Animal</Filter>
+    <ClCompile Include="src\Entity\Mob\Animal\Wolf\Wolf.cpp">
+      <Filter>Source Files\src\Entity\Mob\Animal\Wolf</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Animal\Wolf\Wolf.cpp">
-      <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
+    <ClCompile Include="src\Entity\Mob\Mutant\Mutant.cpp">
+      <Filter>Source Files\src\Entity\Mob\Mutant</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Mutant\Mutant.cpp">
-      <Filter>Source Files\Entity\Mob\Mutant</Filter>
+    <ClCompile Include="src\Entity\Mob\Alien\Alien.cpp">
+      <Filter>Source Files\src\Entity\Mob\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Alien\Alien.cpp">
-      <Filter>Source Files\Entity\Mob\Alien</Filter>
+    <ClCompile Include="src\Entity\Mob\Robot\Robot.cpp">
+      <Filter>Source Files\src\Entity\Mob\Robot</Filter>
     </ClCompile>
-    <ClCompile Include="Entity\Mob\Robot\Robot.cpp">
-      <Filter>Source Files\Entity\Mob\Robot</Filter>
+    <ClCompile Include="src\System\Controls.cpp">
+      <Filter>Source Files\src\System</Filter>
     </ClCompile>
-    <ClCompile Include="System\Controls.cpp">
-      <Filter>Source Files\System</Filter>
+    <ClCompile Include="src\Utilites\Log.cpp">
+      <Filter>Source Files\src\Utilites</Filter>
     </ClCompile>
-    <ClCompile Include="Utilites\Log.cpp">
-      <Filter>Source Files\Utilites</Filter>
+    <ClCompile Include="src\System\EntityController.cpp">
+      <Filter>Source Files\src\System</Filter>
     </ClCompile>
-    <ClCompile Include="System\EntityController.cpp">
-      <Filter>Source Files\System</Filter>
+    <ClCompile Include="src\After.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\Area.cpp">
+      <Filter>Source Files\src\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\World.cpp">
+      <Filter>Source Files\src\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utilites\StructsEnums.h">
-      <Filter>Source Files\Utilites</Filter>
+    <ClInclude Include="src\Utilites\StructsEnums.h">
+      <Filter>Source Files\src\Utilites</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Entity.h">
-      <Filter>Source Files\Entity</Filter>
+    <ClInclude Include="src\Entity\Entity.h">
+      <Filter>Source Files\src\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Utilites\Database\DB_Types.h">
-      <Filter>Source Files\Utilites\Database</Filter>
+    <ClInclude Include="src\Utilites\Database\DB_Types.h">
+      <Filter>Source Files\src\Utilites\Database</Filter>
     </ClInclude>
-    <ClInclude Include="Utilites\Database\Database.h">
-      <Filter>Source Files\Utilites\Database</Filter>
+    <ClInclude Include="src\Utilites\Database\Database.h">
+      <Filter>Source Files\src\Utilites\Database</Filter>
     </ClInclude>
-    <ClInclude Include="Utilites\Constants.h">
-      <Filter>Source Files\Utilites</Filter>
+    <ClInclude Include="src\Utilites\Constants.h">
+      <Filter>Source Files\src\Utilites</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Last\Last.h">
-      <Filter>Source Files\Entity\Last</Filter>
+    <ClInclude Include="src\Entity\Last\Last.h">
+      <Filter>Source Files\src\Entity\Last</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Mob.h">
-      <Filter>Source Files\Entity\Mob</Filter>
+    <ClInclude Include="src\Entity\Mob\Mob.h">
+      <Filter>Source Files\src\Entity\Mob</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Animal\Animal.h">
-      <Filter>Source Files\Entity\Mob\Animal</Filter>
+    <ClInclude Include="src\Entity\Mob\Animal\Animal.h">
+      <Filter>Source Files\src\Entity\Mob\Animal</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Animal\Wolf\Wolf.h">
-      <Filter>Source Files\Entity\Mob\Animal\Wolf</Filter>
+    <ClInclude Include="src\Entity\Mob\Animal\Wolf\Wolf.h">
+      <Filter>Source Files\src\Entity\Mob\Animal\Wolf</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Mutant\Mutant.h">
-      <Filter>Source Files\Entity\Mob\Mutant</Filter>
+    <ClInclude Include="src\Entity\Mob\Mutant\Mutant.h">
+      <Filter>Source Files\src\Entity\Mob\Mutant</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Alien\Alien.h">
-      <Filter>Source Files\Entity\Mob\Alien</Filter>
+    <ClInclude Include="src\Entity\Mob\Alien\Alien.h">
+      <Filter>Source Files\src\Entity\Mob\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\Mob\Robot\Robot.h">
-      <Filter>Source Files\Entity\Mob\Robot</Filter>
+    <ClInclude Include="src\Entity\Mob\Robot\Robot.h">
+      <Filter>Source Files\src\Entity\Mob\Robot</Filter>
     </ClInclude>
-    <ClInclude Include="System\Controls.h">
-      <Filter>Source Files\System</Filter>
+    <ClInclude Include="src\System\Controls.h">
+      <Filter>Source Files\src\System</Filter>
     </ClInclude>
-    <ClInclude Include="Utilites\Log.h">
-      <Filter>Source Files\Utilites</Filter>
+    <ClInclude Include="src\Utilites\Log.h">
+      <Filter>Source Files\src\Utilites</Filter>
     </ClInclude>
-    <ClInclude Include="System\EntityController.h">
-      <Filter>Source Files\System</Filter>
+    <ClInclude Include="src\System\EntityController.h">
+      <Filter>Source Files\src\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Area.h">
+      <Filter>Source Files\src\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\World.h">
+      <Filter>Source Files\src\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Utilites\Database\cheat_sheet.txt">
-      <Filter>Source Files\Utilites\Database</Filter>
+    <Text Include="src\Utilites\Database\cheat_sheet.txt">
+      <Filter>Source Files\src\Utilites\Database</Filter>
     </Text>
   </ItemGroup>
 </Project>

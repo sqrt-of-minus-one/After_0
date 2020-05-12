@@ -37,6 +37,6 @@ public:
 
 	void tick(const float delta); //Каждый кадр
 
-	void getCenter(float& x, float& y); //Получить координаты центра
+	Vector2f getCenter(); //Получить координаты центра
 	void getStats(float& health, float& energy, float& weakness, float& oxygene, float& hunger); //Получить показатели
 };

@@ -18,6 +18,21 @@ EntityController::EntityController(RenderWindow& window)
 	view = window.getView();
 }
 
+EntityController::~EntityController()
+{
+	Cell* p = begin;
+	Cell* pn = p->next;
+	while (pn != nullptr)
+	{
+		delete p->item;
+		delete p;
+		p = pn;
+		pn = pn->next;
+	}
+	delete p->item;
+	delete p;
+}
+
 void EntityController::tick(const float& delta, RenderWindow& window)
 {
 	float h, e, w, o, g;
@@ -64,14 +79,21 @@ void EntityController::tick(const float& delta, RenderWindow& window)
 			static_cast<Last*>(p->item)->tick(delta);
 			static_cast<Last*>(p->item)->draw(window);
 			
-			float x, y;
-			static_cast<Last*>(p->item)->getCenter(x, y);
-			static_cast<Last*>(p->item)->getStats(h, e, w, o, g);
-			view.setCenter(x, y);
+			view.setCenter(static_cast<Last*>(p->item)->getCenter());
 			window.setView(view);
 
+			static_cast<Last*>(p->item)->getStats(h, e, w, o, g);
 			break;
 		}
+		}
+
+		Vector2f position = p->item->getCoordinates();
+		Vector2f d = p->item->getDxy();
+		int dx = (int)(position.x / AREA_WIDTH) - (int)((position.x - d.x) / AREA_WIDTH);
+		int dy = (int)(position.y / AREA_HEIGHT) - (int)((position.y - d.y) / AREA_HEIGHT);
+		if (dx != 0 || dy != 0)
+		{
+
 		}
 	}
 	cout << "FPS: " << 1000 / delta << endl <<
@@ -80,6 +102,11 @@ void EntityController::tick(const float& delta, RenderWindow& window)
 		"Weakness: " << w << endl <<
 		"Oxygen: " << o << endl <<
 		"Hunger: " << g << endl;
+}
+
+void EntityController::zoom(const float& factor)
+{
+	view.zoom(factor);
 }
 
 void EntityController::add(Entity& entity)
@@ -91,7 +118,18 @@ void EntityController::add(Entity& entity)
 	size++;
 }
 
-void EntityController::zoom(const float& factor)
+void EntityController::remove(const int& num)
 {
-	view.zoom(factor);
+	if (num < size && num > 0)
+	{
+		Cell* p = begin;
+		for (int i = 0; i < num - 1; i++)
+		{
+			p = p->next;
+		}
+		Cell* pn = p->next;
+		p = pn->next;
+		delete pn->item;
+		delete pn;
+	}
 }

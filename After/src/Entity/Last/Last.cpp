@@ -165,10 +165,10 @@ void Last::tick(const float delta)
 	Entity::tick(delta);
 }
 
-void Last::getCenter(float& x, float& y)
+Vector2f Last::getCenter()
 {
-	x = sprite.getPosition().x + entityData->width * WIDTH / 2;
-	y = sprite.getPosition().y + entityData->height * HEIGHT / 2;
+	return Vector2f(sprite.getPosition().x + entityData->width * WIDTH / 2,
+		sprite.getPosition().y + entityData->height * HEIGHT / 2);
 }
 
 void Last::getStats(float& health, float& energy, float& weakness, float& oxygen, float& hunger)
