@@ -209,3 +209,8 @@ Vector2f Entity::getCoordinates()
 {
 	return sprite.getPosition();
 }
+
+string Entity::getTextid()
+{
+	return textid;
+}

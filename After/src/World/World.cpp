@@ -344,8 +344,8 @@ int AreasLinkedList::getIteratorIndex()
 
 World::World(const int& x, const int& y)
 {
-	centerX = x / AREA_WIDTH;
-	centerY = y / AREA_HEIGHT;
+	centerX = x / WIDTH / AREA_WIDTH;
+	centerY = y / HEIGHT / AREA_HEIGHT;
 	areas = new AreasLinkedList;
 	for (int i = centerX - LOAD_DISTANCE; i <= centerX + LOAD_DISTANCE; i++)
 	{
@@ -370,23 +370,23 @@ void World::moveWorld(const float& x, const float& y)
 	{
 		centerY--;
 		areas->removeLast();
-		AreaLinkedList list;
+		AreaLinkedList* list = new AreaLinkedList;
 		for (int i = centerX - LOAD_DISTANCE; i <= centerX + LOAD_DISTANCE; i++)
 		{
-			list.addLast(new Area(i, centerY - LOAD_DISTANCE));
+			list->addLast(new Area(i, centerY - LOAD_DISTANCE));
 		}
-		areas->addFirst(&list);
+		areas->addFirst(list);
 	}
 	else if (y > 0)
 	{
 		centerY++;
 		areas->removeFirst();
-		AreaLinkedList list;
+		AreaLinkedList* list = new AreaLinkedList;
 		for (int i = centerX - LOAD_DISTANCE; i <= centerX + LOAD_DISTANCE; i++)
 		{
-			list.addLast(new Area(i, centerY + LOAD_DISTANCE));
+			list->addLast(new Area(i, centerY + LOAD_DISTANCE));
 		}
-		areas->addLast(&list);
+		areas->addLast(list);
 	}
 	if (x < 0)
 	{

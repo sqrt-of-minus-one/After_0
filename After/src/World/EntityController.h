@@ -26,6 +26,7 @@ protected:
 public:
 	EntityController(Last& last);
 	~EntityController();
-	void tick(const float& delta, RenderWindow& window);
+	Vector2f tick(const float& delta, RenderWindow& window, const Vector2f& center);
 	void add(Entity* entity);
+	bool remove(const Entity& entity);
 };

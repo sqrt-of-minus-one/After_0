@@ -68,4 +68,5 @@ public:
 	E_EntityType getType(); //Возвращает тип сущности
 	Vector2f getDxy(); //Возвращает изменение координат за последний кадр
 	Vector2f getCoordinates(); //Возвращает координаты
+	string getTextid(); //Возвращает текстовый идентификатор
 };

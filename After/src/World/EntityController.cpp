@@ -21,18 +21,35 @@ EntityController::EntityController(Last& last)
 
 EntityController::~EntityController()
 {
-	for (Cell* p = begin->prev; p != nullptr; p = p->next)
+	if (entityCount == 1)
 	{
-		delete p->prev->item;
-		delete p->prev;
+		delete begin->item;
+		delete begin;
 	}
-	delete end->item;
-	delete end;
+	else
+	{
+		for (Cell* p = begin->prev; p != nullptr; p = p->next)
+		{
+			delete p->prev->item;
+			delete p->prev;
+		}
+		delete end->item;
+		delete end;
+	}
 }
 
-void EntityController::tick(const float& delta, RenderWindow& window)
+Vector2f EntityController::tick(const float& delta, RenderWindow& window, const Vector2f& center)
 {
+	Vector2f res(0, 0);
 	float h, e, w, o, g;
+	static_cast<Last*>(begin->item)->getStats(h, e, w, o, g);
+	cout << "FPS: " << 1000 / delta << endl <<
+		center.x << " " << center.y << endl <<
+		"Health: " << h << endl <<
+		"Energy: " << e << endl <<
+		"Weakness: " << w << endl <<
+		"Oxygen: " << o << endl <<
+		"Hunger: " << g << endl << endl;
 	for (Cell* p = begin; p != nullptr; p = p->next)
 	{
 		switch (p->item->getType())
@@ -76,17 +93,33 @@ void EntityController::tick(const float& delta, RenderWindow& window)
 			static_cast<Last*>(p->item)->tick(delta);
 			static_cast<Last*>(p->item)->draw(window);
 
-			static_cast<Last*>(p->item)->getStats(h, e, w, o, g);
+			Vector2f pos = p->item->getCoordinates();
+			res.x = (int)pos.x / WIDTH / AREA_WIDTH - center.x;
+			res.y = (int)pos.y / HEIGHT / AREA_HEIGHT - center.y;
+
 			break;
 		}
 		}
+		Vector2f position = p->item->getCoordinates();
+		cout << p->item->getTextid() << " " << (int)p->item->getCoordinates().x / WIDTH << " " << (int)p->item->getCoordinates().y / HEIGHT << endl;
+		if (position.x / WIDTH / AREA_WIDTH < center.x - LOAD_DISTANCE ||
+			position.x / WIDTH / AREA_WIDTH > center.x + LOAD_DISTANCE ||
+			position.y / HEIGHT / AREA_HEIGHT < center.y - LOAD_DISTANCE ||
+			position.y / HEIGHT / AREA_HEIGHT > center.y + LOAD_DISTANCE)
+		{
+			p->prev->next = p->next;
+			if (p->next != nullptr)
+			{
+				p->next->prev = p->prev;
+			}
+			Cell* tmp = p->prev;
+			delete p->item;
+			delete p;
+			p = tmp;
+			entityCount--;
+		}
 	}
-	cout << "FPS: " << 1000 / delta  << endl <<
-		"Health: " << h << endl <<
-		"Energy: " << e << endl <<
-		"Weakness: " << w << endl <<
-		"Oxygen: " << o << endl <<
-		"Hunger: " << g << endl;
+	return res;
 }
 
 void EntityController::add(Entity* entity)
@@ -99,18 +132,19 @@ void EntityController::add(Entity* entity)
 	entityCount++;
 }
 
-/*void EntityController::remove(const int& num)
+bool EntityController::remove(const Entity& entity)
 {
-	if (num < entityCount && num > 0)
+	for (Cell* p = begin; p != nullptr; p = p->next)
 	{
-		Cell* p = begin;
-		for (int i = 0; i < num - 1; i++)
+		if (p->item == &entity)
 		{
-			p = p->next;
+			p->prev->next = p->next;
+			p->next->prev = p->prev;
+			delete p->item;
+			delete p;
+			entityCount--;
+			return true;
 		}
-		Cell* pn = p->next;
-		p = pn->next;
-		delete pn->item;
-		delete pn;
 	}
-}*/
+	return false;
+}

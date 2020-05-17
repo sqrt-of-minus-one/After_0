@@ -24,7 +24,11 @@ WorldController::~WorldController()
 
 void WorldController::tick(const float& delta, sf::RenderWindow& window)
 {
-	entityController->tick(delta, window);
+	Vector2f move = entityController->tick(delta, window, world->getCenter());
+	if (move != Vector2f(0, 0))
+	{
+		world->moveWorld(move.x, move.y);
+	}
 	view.setCenter(player->getCenter());
 	window.setView(view);
 }
