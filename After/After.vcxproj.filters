@@ -86,9 +86,6 @@
     <ClCompile Include="src\Utilites\Log.cpp">
       <Filter>Source Files\src\Utilites</Filter>
     </ClCompile>
-    <ClCompile Include="src\System\EntityController.cpp">
-      <Filter>Source Files\src\System</Filter>
-    </ClCompile>
     <ClCompile Include="src\After.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -96,6 +93,12 @@
       <Filter>Source Files\src\World</Filter>
     </ClCompile>
     <ClCompile Include="src\World\World.cpp">
+      <Filter>Source Files\src\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\WorldController.cpp">
+      <Filter>Source Files\src\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\EntityController.cpp">
       <Filter>Source Files\src\World</Filter>
     </ClCompile>
   </ItemGroup>
@@ -142,13 +145,16 @@
     <ClInclude Include="src\Utilites\Log.h">
       <Filter>Source Files\src\Utilites</Filter>
     </ClInclude>
-    <ClInclude Include="src\System\EntityController.h">
-      <Filter>Source Files\src\System</Filter>
-    </ClInclude>
     <ClInclude Include="src\World\Area.h">
       <Filter>Source Files\src\World</Filter>
     </ClInclude>
     <ClInclude Include="src\World\World.h">
+      <Filter>Source Files\src\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\WorldController.h">
+      <Filter>Source Files\src\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\EntityController.h">
       <Filter>Source Files\src\World</Filter>
     </ClInclude>
   </ItemGroup>

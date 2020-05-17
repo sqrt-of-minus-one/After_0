@@ -174,11 +174,12 @@
     <ClCompile Include="src\Entity\Mob\Mutant\Mutant.cpp" />
     <ClCompile Include="src\Entity\Mob\Robot\Robot.cpp" />
     <ClCompile Include="src\System\Controls.cpp" />
-    <ClCompile Include="src\System\EntityController.cpp" />
     <ClCompile Include="src\Utilites\Database\Database.cpp" />
     <ClCompile Include="src\Utilites\Log.cpp" />
     <ClCompile Include="src\Utilites\StructsEnums.cpp" />
+    <ClCompile Include="src\World\EntityController.cpp" />
     <ClCompile Include="src\World\World.cpp" />
+    <ClCompile Include="src\World\WorldController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\World\Area.h" />
@@ -191,13 +192,14 @@
     <ClInclude Include="src\Entity\Mob\Mutant\Mutant.h" />
     <ClInclude Include="src\Entity\Mob\Robot\Robot.h" />
     <ClInclude Include="src\System\Controls.h" />
-    <ClInclude Include="src\System\EntityController.h" />
     <ClInclude Include="src\Utilites\Constants.h" />
     <ClInclude Include="src\Utilites\Database\Database.h" />
     <ClInclude Include="src\Utilites\Database\DB_Types.h" />
     <ClInclude Include="src\Utilites\Log.h" />
     <ClInclude Include="src\Utilites\StructsEnums.h" />
+    <ClInclude Include="src\World\EntityController.h" />
     <ClInclude Include="src\World\World.h" />
+    <ClInclude Include="src\World\WorldController.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Utilites\Database\cheat_sheet.txt" />

@@ -34,16 +34,4 @@ void Area::unload()
 //			}
 //		}
 //	}
-	
-	Cell* p = begin;
-	Cell* pn = p->next;
-	while (pn != nullptr)
-	{
-		delete p->item;
-		delete p;
-		p = pn;
-		pn = pn->next;
-	}
-	delete p->item;
-	delete p;
 }

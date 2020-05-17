@@ -9,28 +9,25 @@
 using std::cout;
 using std::endl;
 
-EntityController::EntityController(RenderWindow& window)
+EntityController::EntityController(Last& last)
 {
 	begin = new Cell;
-	begin->item = new Last;
+	begin->item = &last;
+	begin->prev = nullptr;
 	begin->next = nullptr;
 	end = begin;
-	view = window.getView();
+	entityCount = 1;
 }
 
 EntityController::~EntityController()
 {
-	Cell* p = begin;
-	Cell* pn = p->next;
-	while (pn != nullptr)
+	for (Cell* p = begin->prev; p != nullptr; p = p->next)
 	{
-		delete p->item;
-		delete p;
-		p = pn;
-		pn = pn->next;
+		delete p->prev->item;
+		delete p->prev;
 	}
-	delete p->item;
-	delete p;
+	delete end->item;
+	delete end;
 }
 
 void EntityController::tick(const float& delta, RenderWindow& window)
@@ -78,25 +75,13 @@ void EntityController::tick(const float& delta, RenderWindow& window)
 		{
 			static_cast<Last*>(p->item)->tick(delta);
 			static_cast<Last*>(p->item)->draw(window);
-			
-			view.setCenter(static_cast<Last*>(p->item)->getCenter());
-			window.setView(view);
 
 			static_cast<Last*>(p->item)->getStats(h, e, w, o, g);
 			break;
 		}
 		}
-
-		Vector2f position = p->item->getCoordinates();
-		Vector2f d = p->item->getDxy();
-		int dx = (int)(position.x / AREA_WIDTH) - (int)((position.x - d.x) / AREA_WIDTH);
-		int dy = (int)(position.y / AREA_HEIGHT) - (int)((position.y - d.y) / AREA_HEIGHT);
-		if (dx != 0 || dy != 0)
-		{
-
-		}
 	}
-	cout << "FPS: " << 1000 / delta << endl <<
+	cout << "FPS: " << 1000 / delta  << endl <<
 		"Health: " << h << endl <<
 		"Energy: " << e << endl <<
 		"Weakness: " << w << endl <<
@@ -104,23 +89,19 @@ void EntityController::tick(const float& delta, RenderWindow& window)
 		"Hunger: " << g << endl;
 }
 
-void EntityController::zoom(const float& factor)
-{
-	view.zoom(factor);
-}
-
-void EntityController::add(Entity& entity)
+void EntityController::add(Entity* entity)
 {
 	end->next = new Cell;
+	end->next->prev = end;
 	end = end->next;
-	end->item = &entity;
+	end->item = entity;
 	end->next = nullptr;
-	size++;
+	entityCount++;
 }
 
-void EntityController::remove(const int& num)
+/*void EntityController::remove(const int& num)
 {
-	if (num < size && num > 0)
+	if (num < entityCount && num > 0)
 	{
 		Cell* p = begin;
 		for (int i = 0; i < num - 1; i++)
@@ -132,4 +113,4 @@ void EntityController::remove(const int& num)
 		delete pn->item;
 		delete pn;
 	}
-}
+}*/

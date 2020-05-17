@@ -20,5 +20,5 @@ meleeDamageType: Cut
 damageSoundsCount: 0
 deathSoundsCount: 0
 entitySoundsCount: 1
-height: 1
+height: 2
 width: 2

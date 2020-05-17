@@ -6,7 +6,7 @@
 
 #include "System/Controls.h"
 #include "Utilites/Log.h"
-#include "System/EntityController.h"
+#include "World/WorldController.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -22,32 +22,32 @@ void check_debug()
 	ifstream file(TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
-		throw runtime_error(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
 	}
 	file.close();
 
 	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
-		throw runtime_error(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
+		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
+		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
 	}
 	file.close();
 
 	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
-		throw runtime_error(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
+		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
+		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
 	}
 	file.close();
 
 	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
-		throw runtime_error(NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
 	}
 	file.close();
 }
@@ -56,7 +56,7 @@ int main()
 {
 	srand(time(NULL));
 	Log::clear();
-	Log::i(START);
+	Log::i(I_START);
 	check_debug();
 
 	RenderWindow window(VideoMode(800, 450), "After");
@@ -64,8 +64,9 @@ int main()
 	window.setFramerateLimit(60);
 	int zoom = 1;
 
-	EntityController controller(window);
-	controller.add(*new Animal(1, "cow"));
+	WorldController controller(window);
+
+	//controller.add(*new Animal(1, "cow"));
 
 	Clock clock;
 	try
@@ -81,7 +82,7 @@ int main()
 				if (event.type == Event::Closed)
 				{
 					window.close();
-					Log::i(CLOSE);
+					Log::i(I_CLOSE);
 				}
 				if (event.type == Event::MouseWheelMoved)
 				{

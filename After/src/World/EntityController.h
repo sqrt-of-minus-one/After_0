@@ -16,18 +16,16 @@ class EntityController
 protected:
 	struct Cell
 	{
+		Cell* prev;
 		Entity* item;
 		Cell* next;
 	};
 	Cell* begin;
 	Cell* end;
-	int size;
-	sf::View view;
+	int entityCount;
 public:
-	EntityController(RenderWindow& window);
+	EntityController(Last& last);
 	~EntityController();
 	void tick(const float& delta, RenderWindow& window);
-	void zoom(const float& factor);
-	void add(Entity& entity);
-	void remove(const int& num);
+	void add(Entity* entity);
 };

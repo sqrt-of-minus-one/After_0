@@ -38,9 +38,11 @@ const string INFO = "Information: "; //Информация
 const string WARNING = "Warning: "; //Предупреждения
 const string ERROR = "An error occured: "; //Ошибка
 const string REPORT = ". Please, report this error to the developers by email jenyaiu90@gmail.com"; //Сообщение об ошибке
-const string START = "program is run"; //Начало программы
-const string CLOSE = "program is closed"; //Конец программы
-const string NO_FILE = "couldn`t find file: "; //Файл не найден
+const string I_START = "program is run"; //Начало программы
+const string I_CLOSE = "program is closed"; //Конец программы
+const string I_WORLD_CREATE = "a world is created"; //Создан мир
+const string W_NO_FILE = "couldn`t find file: "; //Файл не найден
+const string W_ENTITY_NOT_UNL_FROM_AREA = "Entity doesn`t unload from area"; //Сущность не удаляется из зоны
 
 const string LOG = "log"; //Лог
 const string DEBUG = "debug"; //Отладочный файл
