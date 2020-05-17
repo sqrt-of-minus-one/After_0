@@ -5,11 +5,6 @@
 ////////////////////////////////////////
 
 #include "Mob.h"
-#include <random>
-#include <ctime>
-using std::time;
-using std::rand;
-using std::srand;
 
 Mob::Mob(const int id, const string textid) : Entity(id, textid)
 {
@@ -26,7 +21,6 @@ void Mob::attackLong(Entity* attacked)
 
 void Mob::control()
 {
-	srand(time(NULL));
 	switch (rand() % 12)
 	{
 	case 0:
@@ -90,14 +84,13 @@ void Mob::control()
 
 void Mob::tick(const float delta)
 {
-	srand(time(NULL));
 	static float t = 0;
 	static float rt = (rand() % 8 + 3) * 1000;
 
 	t += delta;
 	if (t >= rt)
 	{
-		t -= rt;
+		t = 0;
 		rt = (rand() % 8 + 3) * 1000;
 		control();
 	}

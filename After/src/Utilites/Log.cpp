@@ -27,9 +27,9 @@ void Log::log(const string& msg)
 	file << (t->tm_mday < 10 ? "0" : "") << t->tm_mday << "." <<
 		(t->tm_mon < 9 ? "0" : "") << t->tm_mon + 1 << "." <<
 		t->tm_year - 100 << " " <<
-		(t->tm_hour < 9 ? "0" : "") << t->tm_hour << ":" <<
-		(t->tm_min < 9 ? "0" : "") << t->tm_min << ":" <<
-		(t->tm_sec < 9 ? "0" : "") << t->tm_sec << ": " << msg << endl << endl;
+		(t->tm_hour < 10 ? "0" : "") << t->tm_hour << ":" <<
+		(t->tm_min < 10 ? "0" : "") << t->tm_min << ":" <<
+		(t->tm_sec < 10 ? "0" : "") << t->tm_sec << ": " << msg << endl << endl;
 	file.close();
 
 	delete rt;

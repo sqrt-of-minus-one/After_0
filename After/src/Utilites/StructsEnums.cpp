@@ -6,7 +6,7 @@
 
 #include "StructsEnums.h"
 
-E_Direction stoDirection(const string in)
+E_Direction stoDirection(const string& in)
 {
 	if		(in == "FR")	return FR;
 	else if (in == "R")		return R;
@@ -18,7 +18,7 @@ E_Direction stoDirection(const string in)
 	else					return F;
 }
 
-E_ClothesType stoClothesType(const string in)
+E_ClothesType stoClothesType(const string& in)
 {
 	if		(in == "Jacket")	return JACKET;
 	else if (in == "Shirt")		return SHIRT;
@@ -28,7 +28,7 @@ E_ClothesType stoClothesType(const string in)
 	else						return HAT;
 }
 
-E_DamageType stoDamageType(const string in)
+E_DamageType stoDamageType(const string& in)
 {
 	if		(in == "Cut")			return CUT;
 	else if (in == "Pierce")		return PIERCE;
@@ -37,4 +37,18 @@ E_DamageType stoDamageType(const string in)
 	else if (in == "Suffocation")	return SUFFOCATION;
 	else if (in == "Burn")			return BURN;
 	else							return STRIKE;
+}
+
+E_EntityType stoEntityType(const string& str)
+{
+	if (str == "Alien")			return ENTITY_ALIEN;
+
+	else if (str == "Animal")	return ENTITY_ANIMAL;
+	else if (str == "Wolf")		return ENTITY_WOLF;
+
+	else if (str == "Mutant")	return ENTITY_MUTANT;
+
+	else if (str == "Robot")	return ENTITY_ROBOT;
+
+	else						return ENTITY_LAST;
 }

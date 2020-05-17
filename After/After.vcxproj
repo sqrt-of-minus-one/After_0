@@ -163,38 +163,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="After.cpp" />
-    <ClCompile Include="Entity\Entity.cpp" />
-    <ClCompile Include="Entity\Last\Last.cpp" />
-    <ClCompile Include="Entity\Mob\Alien\Alien.cpp" />
-    <ClCompile Include="Entity\Mob\Animal\Animal.cpp" />
-    <ClCompile Include="Entity\Mob\Animal\Wolf\Wolf.cpp" />
-    <ClCompile Include="Entity\Mob\Mob.cpp" />
-    <ClCompile Include="Entity\Mob\Mutant\Mutant.cpp" />
-    <ClCompile Include="Entity\Mob\Robot\Robot.cpp" />
-    <ClCompile Include="System\Controls.cpp" />
-    <ClCompile Include="Utilites\Database\Database.cpp" />
-    <ClCompile Include="Utilites\Log.cpp" />
-    <ClCompile Include="Utilites\StructsEnums.cpp" />
+    <ClCompile Include="src\After.cpp" />
+    <ClCompile Include="src\World\Area.cpp" />
+    <ClCompile Include="src\Entity\Entity.cpp" />
+    <ClCompile Include="src\Entity\Last\Last.cpp" />
+    <ClCompile Include="src\Entity\Mob\Alien\Alien.cpp" />
+    <ClCompile Include="src\Entity\Mob\Animal\Animal.cpp" />
+    <ClCompile Include="src\Entity\Mob\Animal\Wolf\Wolf.cpp" />
+    <ClCompile Include="src\Entity\Mob\Mob.cpp" />
+    <ClCompile Include="src\Entity\Mob\Mutant\Mutant.cpp" />
+    <ClCompile Include="src\Entity\Mob\Robot\Robot.cpp" />
+    <ClCompile Include="src\System\Controls.cpp" />
+    <ClCompile Include="src\Utilites\Database\Database.cpp" />
+    <ClCompile Include="src\Utilites\Log.cpp" />
+    <ClCompile Include="src\Utilites\StructsEnums.cpp" />
+    <ClCompile Include="src\World\EntityController.cpp" />
+    <ClCompile Include="src\World\World.cpp" />
+    <ClCompile Include="src\World\WorldController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entity\Entity.h" />
-    <ClInclude Include="Entity\Last\Last.h" />
-    <ClInclude Include="Entity\Mob\Alien\Alien.h" />
-    <ClInclude Include="Entity\Mob\Animal\Animal.h" />
-    <ClInclude Include="Entity\Mob\Animal\Wolf\Wolf.h" />
-    <ClInclude Include="Entity\Mob\Mob.h" />
-    <ClInclude Include="Entity\Mob\Mutant\Mutant.h" />
-    <ClInclude Include="Entity\Mob\Robot\Robot.h" />
-    <ClInclude Include="System\Controls.h" />
-    <ClInclude Include="Utilites\Constants.h" />
-    <ClInclude Include="Utilites\Database\Database.h" />
-    <ClInclude Include="Utilites\Database\DB_Types.h" />
-    <ClInclude Include="Utilites\Log.h" />
-    <ClInclude Include="Utilites\StructsEnums.h" />
+    <ClInclude Include="src\World\Area.h" />
+    <ClInclude Include="src\Entity\Entity.h" />
+    <ClInclude Include="src\Entity\Last\Last.h" />
+    <ClInclude Include="src\Entity\Mob\Alien\Alien.h" />
+    <ClInclude Include="src\Entity\Mob\Animal\Animal.h" />
+    <ClInclude Include="src\Entity\Mob\Animal\Wolf\Wolf.h" />
+    <ClInclude Include="src\Entity\Mob\Mob.h" />
+    <ClInclude Include="src\Entity\Mob\Mutant\Mutant.h" />
+    <ClInclude Include="src\Entity\Mob\Robot\Robot.h" />
+    <ClInclude Include="src\System\Controls.h" />
+    <ClInclude Include="src\Utilites\Constants.h" />
+    <ClInclude Include="src\Utilites\Database\Database.h" />
+    <ClInclude Include="src\Utilites\Database\DB_Types.h" />
+    <ClInclude Include="src\Utilites\Log.h" />
+    <ClInclude Include="src\Utilites\StructsEnums.h" />
+    <ClInclude Include="src\World\EntityController.h" />
+    <ClInclude Include="src\World\World.h" />
+    <ClInclude Include="src\World\WorldController.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Utilites\Database\cheat_sheet.txt" />
+    <Text Include="src\Utilites\Database\cheat_sheet.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

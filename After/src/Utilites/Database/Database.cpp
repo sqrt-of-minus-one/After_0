@@ -26,31 +26,35 @@ int Database::wolfLoaded = 0;
 
 void Database::loadEntity(const int id, const string textid, ifstream& file)
 {
+	string useless, tmp;
 	entityData[id] = new DBS_EntityData;
-	file >> entityData[id]->isUnloaded;
-	file >> entityData[id]->maxHealth;
-	file >> entityData[id]->maxOxygen;
-	file >> entityData[id]->oxygenSpeed;
-	file >> entityData[id]->oxygenRegenerationSpeed;
-	file >> entityData[id]->damageResist.strike;
-	file >> entityData[id]->damageResist.cut;
-	file >> entityData[id]->damageResist.pierce;
-	file >> entityData[id]->damageResist.poison;
-	file >> entityData[id]->damageResist.radiation;
-	file >> entityData[id]->damageResist.suffocation;
-	file >> entityData[id]->damageResist.burn;
-	file >> entityData[id]->walkSpeed;
-	file >> entityData[id]->runSpeed;
-	file >> entityData[id]->meleeAttackDamage;
-	file >> entityData[id]->meleeAttackRadius;
 
-	string tmp;
-	file >> tmp;
+	file >> useless >> tmp;
+	entityData[id]->type = stoEntityType(tmp);
+
+	file >> useless >> entityData[id]->isUnloaded;
+	file >> useless >> entityData[id]->maxHealth;
+	file >> useless >> entityData[id]->maxOxygen;
+	file >> useless >> entityData[id]->oxygenSpeed;
+	file >> useless >> entityData[id]->oxygenRegenerationSpeed;
+	file >> useless >> entityData[id]->damageResist.strike;
+	file >> useless >> entityData[id]->damageResist.cut;
+	file >> useless >> entityData[id]->damageResist.pierce;
+	file >> useless >> entityData[id]->damageResist.poison;
+	file >> useless >> entityData[id]->damageResist.radiation;
+	file >> useless >> entityData[id]->damageResist.suffocation;
+	file >> useless >> entityData[id]->damageResist.burn;
+	file >> useless >> entityData[id]->walkSpeed;
+	file >> useless >> entityData[id]->runSpeed;
+	file >> useless >> entityData[id]->meleeAttackDamage;
+	file >> useless >> entityData[id]->meleeAttackRadius;
+
+	file >> useless >> tmp;
 	entityData[id]->meleeDamageType = stoDamageType(tmp);
 
-	file >> entityData[id]->damageSoundsCount;
-	file >> entityData[id]->deathSoundsCount;
-	file >> entityData[id]->entitySoundsCount;
+	file >> useless >> entityData[id]->damageSoundsCount;
+	file >> useless >> entityData[id]->deathSoundsCount;
+	file >> useless >> entityData[id]->entitySoundsCount;
 	entityData[id]->damageSounds = new Sound[entityData[id]->damageSoundsCount];
 	entityData[id]->deathSounds = new Sound[entityData[id]->deathSoundsCount];
 	entityData[id]->entitySounds = new Sound[entityData[id]->entitySoundsCount];
@@ -60,7 +64,7 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 		string path = SOUNDS_PATH + ENTITY + textid + "_" + "damage" + "_" + to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(NO_FILE + path);
+			Log::w(W_NO_FILE + path);
 		}
 		entityData[id]->damageSounds[i].setBuffer(*buffer);
 	}
@@ -70,7 +74,7 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 		string path = SOUNDS_PATH + ENTITY + textid + "_" + "death" + "_" + to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(NO_FILE + path);
+			Log::w(W_NO_FILE + path);
 		}
 		entityData[id]->deathSounds[i].setBuffer(*buffer);
 	}
@@ -80,52 +84,52 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 		string path = SOUNDS_PATH + ENTITY + textid + "_" + "entity" + "_" + to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(NO_FILE + path);
+			Log::w(W_NO_FILE + path);
 		}
 		entityData[id]->entitySounds[i].setBuffer(*buffer);
 	}
 
-	file >> entityData[id]->height;
-	file >> entityData[id]->width;
+	file >> useless >> entityData[id]->height;
+	file >> useless >> entityData[id]->width;
 
 	if (!entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT);
 		entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT);
 		entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT);
 		entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT);
 		entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT);
 		entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT);
 		entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT);
 		entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT))
 	{
-		Log::w(NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT);
+		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT);
 		entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + to_string(entityData[id]->height) + "x" + to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 
@@ -134,9 +138,10 @@ void Database::loadEntity(const int id, const string textid, ifstream& file)
 
 void Database::loadMob(const int id, const string textid, ifstream& file)
 {
+	string useless;
 	mobData[id] = new DBS_MobData;
 	mobData[id]->id = id;
-	file >> mobData[id]->drops;
+	file >> useless >> mobData[id]->drops;
 	mobData[id]->drop = new S_Drop[mobData[id]->drops];
 	for (int i = 0; i < mobData[id]->drops; i++)
 	{
@@ -148,35 +153,37 @@ void Database::loadMob(const int id, const string textid, ifstream& file)
 		file >> mobData[id]->drop[i].min;
 		file >> mobData[id]->drop[i].chance;
 	}
-	file >> mobData[id]->experience;
-	file >> mobData[id]->canAttackMelee;
-	file >> mobData[id]->canAttackLong;
-	file >> mobData[id]->longAttackRadius;
-	file >> mobData[id]->longAttackDamage;
+	file >> useless >> mobData[id]->experience;
+	file >> useless >> mobData[id]->canAttackMelee;
+	file >> useless >> mobData[id]->canAttackLong;
+	file >> useless >> mobData[id]->longAttackRadius;
+	file >> useless >> mobData[id]->longAttackDamage;
 
 	string tmp;
-	file >> tmp;
+	file >> useless >> tmp;
 	mobData[id]->longDamageType = stoDamageType(tmp);
 
-	file >> mobData[id]->canPoisonAttack;
-	file >> mobData[id]->viewRadius;
-	file >> mobData[id]->purseRadius;
+	file >> useless >> mobData[id]->canPoisonAttack;
+	file >> useless >> mobData[id]->viewRadius;
+	file >> useless >> mobData[id]->purseRadius;
 	mobLoaded[id]++;
 }
 
 void Database::loadAnimal(const int id, const string textid, ifstream& file)
 {
+	string useless;
 	animalData[id] = new DBS_AnimalData;
 	animalData[id]->id = id;
-	file >> animalData[id]->mutantTextid;
+	file >> useless >> animalData[id]->mutantTextid;
 	animalLoaded[id]++;
 }
 
 void Database::loadWolf(ifstream& file)
 {
+	string useless;
 	wolfData = new DBS_WolfData;
-	file >> wolfData->maxHunger;
-	file >> wolfData->hungerSpeed;
+	file >> useless >> wolfData->maxHunger;
+	file >> useless >> wolfData->hungerSpeed;
 	wolfLoaded++;
 }
 
@@ -240,6 +247,7 @@ void Database::removeWolf()
 
 DBS_EntityData* Database::getEntityData(const string textid)
 {
+	string useless;
 	int id;
 	ifstream file(DATA_PATH + ENTITY + textid + DATA_EXT);
 	if (!file.is_open())
@@ -248,7 +256,7 @@ DBS_EntityData* Database::getEntityData(const string textid)
 		Log::e(error);
 		throw runtime_error(error);
 	}
-	file >> id;
+	file >> useless >> id;
 	if (entityData[id] == NULL)
 	{
 		loadEntity(id, textid, file);
@@ -259,6 +267,7 @@ DBS_EntityData* Database::getEntityData(const string textid)
 
 DBS_MobData* Database::getMobData(const string textid)
 {
+	string useless;
 	int id;
 	ifstream file(DATA_PATH + ENTITY + MOB + textid + DATA_EXT);
 	if (!file.is_open())
@@ -267,7 +276,7 @@ DBS_MobData* Database::getMobData(const string textid)
 		Log::e(error);
 		throw runtime_error(error);
 	}
-	file >> id;
+	file >> useless >> id;
 	if (mobData[id] == NULL)
 	{
 		loadMob(id, textid, file);
@@ -278,6 +287,7 @@ DBS_MobData* Database::getMobData(const string textid)
 
 DBS_AnimalData* Database::getAnimalData(const string textid)
 {
+	string useless;
 	int id;
 	ifstream file(DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT);
 	if (!file.is_open())
@@ -286,7 +296,7 @@ DBS_AnimalData* Database::getAnimalData(const string textid)
 		Log::e(error);
 		throw runtime_error(error);
 	}
-	file >> id;
+	file >> useless >> id;
 	if (animalData[id] == NULL)
 	{
 		loadAnimal(id, textid, file);
