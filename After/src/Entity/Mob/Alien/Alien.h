@@ -14,7 +14,7 @@ class Alien : public Mob
 protected:
 	void send(Alien* reciever, const S_Message& message); //Отправить сообщение
 public:
-	Alien(const int id, const string textid);
+	Alien(const int id, const std::string textid);
 	
 	void recieve(const S_Message& message); //Принять сообщение
 };

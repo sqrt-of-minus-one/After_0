@@ -21,7 +21,8 @@ protected:
 	
 	void control(); //Управление действиями моба
 public:
-	Mob(const int id, const string textid);
+	Mob(const int id, const std::string textid);
+	~Mob();
 
 	void tick(const float delta);
 };

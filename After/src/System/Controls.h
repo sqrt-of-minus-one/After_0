@@ -8,15 +8,13 @@
 
 #include <SFML/Graphics.hpp>
 
-using sf::Keyboard;
-
 struct S_Controls
 {
-	static Keyboard::Key forward;
-	static Keyboard::Key back;
-	static Keyboard::Key left;
-	static Keyboard::Key right;
-	static Keyboard::Key run;
+	static sf::Keyboard::Key forward;
+	static sf::Keyboard::Key back;
+	static sf::Keyboard::Key left;
+	static sf::Keyboard::Key right;
+	static sf::Keyboard::Key run;
 	static bool invertZoom;
 	static bool invertMouseButtons;
 

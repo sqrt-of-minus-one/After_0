@@ -18,5 +18,5 @@ protected:
 
 	void death(const E_DamageType damageType, const Entity* murderer); //Смерть
 public:
-	Animal(const int id, const string textid);
+	Animal(const int id, const std::string textid);
 };

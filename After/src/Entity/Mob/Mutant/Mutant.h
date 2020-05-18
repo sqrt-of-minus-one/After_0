@@ -13,7 +13,7 @@ class Mutant : public Mob
 {
 	float danceTime; //Время до окончания танца
 public:
-	Mutant(const int id, const string textid);
+	Mutant(const int id, const std::string textid);
 
 	void underControl(const S_Message& message); //Нахождение под влиянием инопланетянина
 	void dance(); //Начать танцевать

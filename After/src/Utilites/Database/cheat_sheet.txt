@@ -60,3 +60,26 @@ MOB ("data\\entity\\mob\\<mob>.dat")
 ANIMAL ("data\\entity\\mob\\animal\\<animal>.dat")
 	<id>
 	<mutantTextid>
+
+OBJECT ("data\\object\\<object>.dat")
+	<id>
+	<type>
+	<canBeBrokenByHand>
+	<brokeByHandSpeed>
+	<damage>
+	<damageType>
+	<drops> (кол-во)
+		<drop1 id> <drop1 min> <drop1 max> <drop1 chance>
+		<drop2 id> <drop2 min> <drop2 max> <drop2 chance>
+		...
+	<maxHealth>
+	<damageResist:strike>
+	<damageResist:cut>
+	<damageResist:pierce>
+	<damageResist:poison>
+	<damageResist:radiation>
+	<damageResist:suffocation>
+	<damageResist:burn>
+	<height>
+	<width>
+	<opacity>

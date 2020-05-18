@@ -17,6 +17,6 @@ protected:
 
 	void death(const E_DamageType damageType, const Entity* murderer);
 public:
-	Wolf(const int id, const string textid);
+	Wolf(const int id, const std::string textid);
 };
 

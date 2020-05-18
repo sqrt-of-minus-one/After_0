@@ -6,7 +6,7 @@
 
 #include "Wolf.h"
 
-Wolf::Wolf(const int id, const string textid) : Animal(id, textid)
+Wolf::Wolf(const int id, const std::string textid) : Animal(id, textid)
 {
 	wolfData = Database::getWolfData();
 }

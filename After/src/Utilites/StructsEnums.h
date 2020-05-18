@@ -8,8 +8,6 @@
 
 #include <string>
 
-using std::string;
-
 enum E_EntityType //Тип сущности
 {
 	ENTITY_LAST,	//Игрок
@@ -57,6 +55,16 @@ enum E_DamageType //Виды урона
 	BURN			//Ожог
 };
 
+enum E_ObjectType //Тип объекта
+{
+	STONE_OBJ, //Камень
+	WOOD_OBJ, //Древесина
+	DIRT_OBJ, //Земля
+	GLASS_OBJ, //Стекло
+	AIR_OBJ, //Воздух (или газ)
+	OTHER_OBJ //Прочее
+};
+
 struct S_DamageResist //Сопротивляемость различным видам урона
 {
 	float strike;		//Удар
@@ -71,7 +79,7 @@ struct S_DamageResist //Сопротивляемость различным видам урона
 
 struct S_Drop //Дроп
 {
-	string item;		//Текстовый идентификатор выпадающего предмета
+	std::string item;		//Текстовый идентификатор выпадающего предмета
 	int min;		//Минимальное количество
 	int max;		//Максимальное количество
 	float chance;	//Вероятность выпадения
@@ -82,7 +90,8 @@ struct S_Message //Телепатическое сообщение
 
 };
 
-E_Direction stoDirection(const string& in);
-E_ClothesType stoClothesType(const string& in);
-E_DamageType stoDamageType(const string& in);
-E_EntityType stoEntityType(const string& str);
+E_Direction stoDirection(const std::string& in);
+E_ClothesType stoClothesType(const std::string& in);
+E_DamageType stoDamageType(const std::string& in);
+E_EntityType stoEntityType(const std::string& str);
+E_ObjectType stoObjectType(const std::string& str);

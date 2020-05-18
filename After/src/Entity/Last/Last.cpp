@@ -7,9 +7,6 @@
 #include "Last.h"
 #include "../../System/Controls.h"
 
-using sf::IntRect;
-using sf::View;
-
 Last::Last() : Entity(0, "last")
 {
 	maxHunger = 40;
@@ -60,24 +57,24 @@ void Last::tick(const float delta)
 {
 	isRunning = false;
 	isWalking = true;
-	if (Keyboard::isKeyPressed(S_Controls::forward))
+	if (sf::Keyboard::isKeyPressed(S_Controls::forward))
 	{
-		if (Keyboard::isKeyPressed(S_Controls::right))
+		if (sf::Keyboard::isKeyPressed(S_Controls::right))
 		{
 			if (direction != FR)
 			{
 				direction = FR;
-				IntRect rect = sprite.getTextureRect();
+				sf::IntRect rect = sprite.getTextureRect();
 				sprite.setTexture(entityData->texture_fr);
 				sprite.setTextureRect(rect);
 			}
 		}
-		else if (Keyboard::isKeyPressed(S_Controls::left))
+		else if (sf::Keyboard::isKeyPressed(S_Controls::left))
 		{
 			if (direction != FL)
 			{
 				direction = FL;
-				IntRect rect = sprite.getTextureRect();
+				sf::IntRect rect = sprite.getTextureRect();
 				sprite.setTexture(entityData->texture_fl);
 				sprite.setTextureRect(rect);
 			}
@@ -85,29 +82,29 @@ void Last::tick(const float delta)
 		else if (direction != F)
 		{
 			direction = F;
-			IntRect rect = sprite.getTextureRect();
+			sf::IntRect rect = sprite.getTextureRect();
 			sprite.setTexture(entityData->texture_f);
 			sprite.setTextureRect(rect);
 		}
 	}
-	else if (Keyboard::isKeyPressed(S_Controls::back))
+	else if (sf::Keyboard::isKeyPressed(S_Controls::back))
 	{
-		if (Keyboard::isKeyPressed(S_Controls::right))
+		if (sf::Keyboard::isKeyPressed(S_Controls::right))
 		{
 			if (direction != BR)
 			{
 				direction = BR;
-				IntRect rect = sprite.getTextureRect();
+				sf::IntRect rect = sprite.getTextureRect();
 				sprite.setTexture(entityData->texture_br);
 				sprite.setTextureRect(rect);
 			}
 		}
-		else if (Keyboard::isKeyPressed(S_Controls::left))
+		else if (sf::Keyboard::isKeyPressed(S_Controls::left))
 		{
 			if (direction != BL)
 			{
 				direction = BL;
-				IntRect rect = sprite.getTextureRect();
+				sf::IntRect rect = sprite.getTextureRect();
 				sprite.setTexture(entityData->texture_bl);
 				sprite.setTextureRect(rect);
 			}
@@ -115,27 +112,27 @@ void Last::tick(const float delta)
 		else if (direction != B)
 		{
 			direction = B;
-			IntRect rect = sprite.getTextureRect();
+			sf::IntRect rect = sprite.getTextureRect();
 			sprite.setTexture(entityData->texture_b);
 			sprite.setTextureRect(rect);
 		}
 	}
-	else if (Keyboard::isKeyPressed(S_Controls::right))
+	else if (sf::Keyboard::isKeyPressed(S_Controls::right))
 	{
 		if (direction != R)
 		{
 			direction = R;
-			IntRect rect = sprite.getTextureRect();
+			sf::IntRect rect = sprite.getTextureRect();
 			sprite.setTexture(entityData->texture_r);
 			sprite.setTextureRect(rect);
 		}
 	}
-	else if (Keyboard::isKeyPressed(S_Controls::left))
+	else if (sf::Keyboard::isKeyPressed(S_Controls::left))
 	{
 		if (direction != L)
 		{
 			direction = L;
-			IntRect rect = sprite.getTextureRect();
+			sf::IntRect rect = sprite.getTextureRect();
 			sprite.setTexture(entityData->texture_l);
 			sprite.setTextureRect(rect);
 		}
@@ -156,7 +153,7 @@ void Last::tick(const float delta)
 		run_control = true;
 	}
 
-	if (isWalking && Keyboard::isKeyPressed(S_Controls::run) && run_control)
+	if (isWalking && sf::Keyboard::isKeyPressed(S_Controls::run) && run_control)
 	{
 		isRunning = true;
 	}
@@ -165,9 +162,9 @@ void Last::tick(const float delta)
 	Entity::tick(delta);
 }
 
-Vector2f Last::getCenter()
+sf::Vector2f Last::getCenter()
 {
-	return Vector2f(sprite.getPosition().x + entityData->width * WIDTH / 2,
+	return sf::Vector2f(sprite.getPosition().x + entityData->width * WIDTH / 2,
 		sprite.getPosition().y + entityData->height * HEIGHT / 2);
 }
 

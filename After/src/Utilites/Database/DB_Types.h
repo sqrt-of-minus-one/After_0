@@ -10,9 +10,6 @@
 #include <SFML/Audio.hpp>
 #include "../StructsEnums.h"
 
-using sf::Sound;
-using sf::Texture;
-
 struct DBS_EntityData
 {
 	E_EntityType type; //Тип сущности
@@ -32,21 +29,21 @@ struct DBS_EntityData
 	int meleeAttackRadius; //Радиус атаки
 	E_DamageType meleeDamageType; //Тип наносимого урона
 
-	Sound* damageSounds; //Звуки при получении урона
-	Sound* deathSounds; //Звуки при смерти
-	Sound* entitySounds; //Просто звуки
+	sf::Sound* damageSounds; //Звуки при получении урона
+	sf::Sound* deathSounds; //Звуки при смерти
+	sf::Sound* entitySounds; //Просто звуки
 	int damageSoundsCount; //Количество звуков при получении урона
 	int deathSoundsCount; //Количество звуков при смерти
 	int entitySoundsCount; //Количество просто звуков
 
-	Texture texture_f; //Текстура сущности, вперёд
-	Texture texture_fr; //Вперёд и вправо
-	Texture texture_r; //Вправо
-	Texture texture_br; //И т. д.
-	Texture texture_b;
-	Texture texture_bl;
-	Texture texture_l;
-	Texture texture_fl;
+	sf::Texture texture_f; //Текстура сущности, вперёд
+	sf::Texture texture_fr; //Вперёд и вправо
+	sf::Texture texture_r; //Вправо
+	sf::Texture texture_br; //И т. д.
+	sf::Texture texture_b;
+	sf::Texture texture_bl;
+	sf::Texture texture_l;
+	sf::Texture texture_fl;
 	int height; //Высота спрайта
 	int width; //Ширина спрайта
 };
@@ -70,11 +67,37 @@ struct DBS_MobData
 struct DBS_AnimalData
 {
 	int id; //Номер животного
-	string mutantTextid; //Текстовый ID соответствующего мутанта
+	std::string mutantTextid; //Текстовый ID соответствующего мутанта
 };
 
 struct DBS_WolfData
 {
 	float maxHunger;
 	float hungerSpeed;
+};
+
+
+struct DBS_ObjectData
+{
+	int id; //ID объекта
+
+	E_ObjectType type; //Тип объекта
+
+	bool canBeBrokenByHand; //Может ли быть разрушен рукой
+	float brokeByHandSpeed; //Количество секунд, необходимых на разрушение рукой
+	//Todo: Скорость разрушения инструментами
+
+	float damage; //Наносимый при контакте урон
+	E_DamageType damageType; //Тип наносимого урона
+
+	int drops; //Количество элементов в массиве дропа
+	S_Drop* drop; //Дроп
+
+	float maxHealth; //Прочность
+	S_DamageResist damageResist; //Сопротивляемость урону
+
+	sf::Texture texture; //Текстура
+	int height; //Высота
+	int width; //Ширина
+	float opacity; //Прозрачность
 };

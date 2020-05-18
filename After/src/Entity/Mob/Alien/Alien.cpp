@@ -6,7 +6,7 @@
 
 #include "Alien.h"
 
-Alien::Alien(const int id, const string textid) : Mob(id, textid)
+Alien::Alien(const int id, const std::string textid) : Mob(id, textid)
 {
 }
 

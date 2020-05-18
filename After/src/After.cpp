@@ -9,21 +9,15 @@
 #include "World/WorldController.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-using namespace sf;
-using std::cout;
-using std::endl;
-using std::srand;
-using std::time;
-using std::runtime_error;
+#include "Object/Object.h"
 
 void check_debug()
 {
-	ifstream file(TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+	std::ifstream file(TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
 		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
-		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
 	}
 	file.close();
 
@@ -31,7 +25,7 @@ void check_debug()
 	if (!file.is_open())
 	{
 		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
-		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
 	}
 	file.close();
 
@@ -39,7 +33,7 @@ void check_debug()
 	if (!file.is_open())
 	{
 		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
-		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
 	}
 	file.close();
 
@@ -47,7 +41,39 @@ void check_debug()
 	if (!file.is_open())
 	{
 		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
-		throw runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+	}
+	file.close();
+
+	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
+	if (!file.is_open())
+	{
+		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
+	}
+	file.close();
+
+	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
+	if (!file.is_open())
+	{
+		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
+	}
+	file.close();
+
+	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
+	if (!file.is_open())
+	{
+		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
+	}
+	file.close();
+
+	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
+	if (!file.is_open())
+	{
+		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
+		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
 	}
 	file.close();
 }
@@ -59,16 +85,14 @@ int main()
 	Log::i(I_START);
 	check_debug();
 
-	RenderWindow window(VideoMode(800, 450), "After");
-	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(800, 450), "After");
+	//window.setVerticalSyncEnabled(true);
+	//window.setFramerateLimit(60);
 	int zoom = 1;
 
 	WorldController controller(window);
 
-	//controller.add(*new Animal(1, "cow"));
-
-	Clock clock;
+	sf::Clock clock;
 	try
 	{
 		while (window.isOpen())
@@ -76,15 +100,15 @@ int main()
 			float delta = clock.getElapsedTime().asMilliseconds();
 			clock.restart();
 
-			Event event;
+			sf::Event event;
 			while (window.pollEvent(event))
 			{
-				if (event.type == Event::Closed)
+				if (event.type == sf::Event::Closed)
 				{
 					window.close();
 					Log::i(I_CLOSE);
 				}
-				if (event.type == Event::MouseWheelMoved)
+				if (event.type == sf::Event::MouseWheelMoved)
 				{
 					int wheelDelta = event.mouseWheel.delta < 0 ^ S_Controls::invertZoom ? 1 : -1;
 					if (!(zoom == MAX_ZOOM && wheelDelta > 0 || zoom == MIN_ZOOM && wheelDelta < 0))
@@ -101,7 +125,7 @@ int main()
 			controller.tick(delta, window);
 
 			//Tmp
-			CircleShape c[5][5];
+			sf::CircleShape c[5][5];
 			for (int i = 0; i < 5; i++)
 			{
 				for (int j = 0; j < 5; j++)

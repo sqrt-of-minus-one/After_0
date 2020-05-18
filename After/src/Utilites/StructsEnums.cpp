@@ -6,7 +6,7 @@
 
 #include "StructsEnums.h"
 
-E_Direction stoDirection(const string& in)
+E_Direction stoDirection(const std::string& in)
 {
 	if		(in == "FR")	return FR;
 	else if (in == "R")		return R;
@@ -18,7 +18,7 @@ E_Direction stoDirection(const string& in)
 	else					return F;
 }
 
-E_ClothesType stoClothesType(const string& in)
+E_ClothesType stoClothesType(const std::string& in)
 {
 	if		(in == "Jacket")	return JACKET;
 	else if (in == "Shirt")		return SHIRT;
@@ -28,7 +28,7 @@ E_ClothesType stoClothesType(const string& in)
 	else						return HAT;
 }
 
-E_DamageType stoDamageType(const string& in)
+E_DamageType stoDamageType(const std::string& in)
 {
 	if		(in == "Cut")			return CUT;
 	else if (in == "Pierce")		return PIERCE;
@@ -39,7 +39,7 @@ E_DamageType stoDamageType(const string& in)
 	else							return STRIKE;
 }
 
-E_EntityType stoEntityType(const string& str)
+E_EntityType stoEntityType(const std::string& str)
 {
 	if (str == "Alien")			return ENTITY_ALIEN;
 
@@ -51,4 +51,13 @@ E_EntityType stoEntityType(const string& str)
 	else if (str == "Robot")	return ENTITY_ROBOT;
 
 	else						return ENTITY_LAST;
+}
+
+E_ObjectType stoObjectType(const std::string& str)
+{
+	if (str == "Stone")			return STONE_OBJ;
+	else if (str == "Wood")		return WOOD_OBJ;
+	else if (str == "Dirt")		return DIRT_OBJ;
+	else if (str == "Glass")	return GLASS_OBJ;
+	else						return OTHER_OBJ;
 }

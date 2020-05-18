@@ -10,18 +10,13 @@
 #include <random>
 #include <ctime>
 
-using sf::Sprite;
-using sf::RenderWindow;
-using sf::Vector2f;
-using std::rand;
-
 //Класс сущности
 class Entity abstract
 {
 
 protected:
 	int id; //Числовой идентификатор
-	string textid; //Текстовый идентификатор
+	std::string textid; //Текстовый идентификатор
 	DBS_EntityData* entityData; //Постоянные свойства сущности
 
 	int z; //Координата по оси Z
@@ -43,7 +38,7 @@ protected:
 
 	E_Direction direction; //Направление
 
-	Sprite sprite; //Спрайт
+	sf::Sprite sprite; //Спрайт
 
 	void move(const float& delta); //Перемещение
 
@@ -52,7 +47,8 @@ protected:
 
 	void calculateStats(const float& delta); //Вычисление показателей
 public:
-	Entity(const int id, const string textid);
+	Entity(const int id, const std::string textid);
+	~Entity();
 
 	void getDamage(const float damage, const E_DamageType damageType, const Entity* attacker); //Получение урона
 	void getPoison(const int duration); //Получение эффекта отравления
@@ -61,12 +57,12 @@ public:
 	void unstone(); //Освобождение от камня
 	void unweb(); //Освобождение от паутины
 
-	void draw(RenderWindow& window); //Отображение спрайта на экране
+	void draw(sf::RenderWindow& window); //Отображение спрайта на экране
 
 	void tick(const float delta); //Каждый кадр
 
 	E_EntityType getType(); //Возвращает тип сущности
-	Vector2f getDxy(); //Возвращает изменение координат за последний кадр
-	Vector2f getCoordinates(); //Возвращает координаты
-	string getTextid(); //Возвращает текстовый идентификатор
+	sf::Vector2f getDxy(); //Возвращает изменение координат за последний кадр
+	sf::Vector2f getCoordinates(); //Возвращает координаты
+	std::string getTextid(); //Возвращает текстовый идентификатор
 };

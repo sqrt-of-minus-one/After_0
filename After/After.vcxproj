@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\After.cpp" />
+    <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\World\Area.cpp" />
     <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Entity\Last\Last.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="src\World\WorldController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Object\Object.h" />
     <ClInclude Include="src\World\Area.h" />
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Entity\Last\Last.h" />

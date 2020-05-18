@@ -6,9 +6,7 @@
 
 #include "Entity.h"
 
-using sf::IntRect;
-
-Entity::Entity(const int id, const string textid)
+Entity::Entity(const int id, const std::string textid)
 {
 	this->id = id;
 	this->textid = textid;
@@ -30,7 +28,12 @@ Entity::Entity(const int id, const string textid)
 	direction = F;
 
 	sprite.setTexture(entityData->texture_f);
-	sprite.setTextureRect(IntRect(0, 0, entityData->width * WIDTH, entityData->height * HEIGHT));
+	sprite.setTextureRect(sf::IntRect(0, 0, entityData->width * WIDTH, entityData->height * HEIGHT));
+}
+
+Entity::~Entity()
+{
+	Database::removeEntity(id);
 }
 
 void Entity::move(const float& delta)
@@ -134,7 +137,7 @@ void Entity::unweb()
 {
 }
 
-void Entity::draw(RenderWindow& window)
+void Entity::draw(sf::RenderWindow& window)
 {
 	window.draw(sprite);
 }
@@ -144,7 +147,7 @@ void Entity::tick(const float delta)
 	move(delta);
 	calculateStats(delta);
 
-	IntRect rect = sprite.getTextureRect();
+	sf::IntRect rect = sprite.getTextureRect();
 	
 	static float current_frame = 0;
 	current_frame += delta;
@@ -162,21 +165,21 @@ void Entity::tick(const float delta)
 		sprite.setTextureRect(rect);
 	}
 
-	if (!isWalking && rect.top != STAY * HEIGHT * entityData->height)
+	if (!isWalking && rect.top != STAY_ANIM * HEIGHT * entityData->height)
 	{
-		rect.top = STAY * HEIGHT * entityData->height;
+		rect.top = STAY_ANIM * HEIGHT * entityData->height;
 		sprite.setTextureRect(rect);
 	}
 	else if (isWalking)
 	{
-		if (!isRunning && rect.top != WALK * HEIGHT * entityData->height)
+		if (!isRunning && rect.top != WALK_ANIM * HEIGHT * entityData->height)
 		{
-			rect.top = WALK * HEIGHT * entityData->height;
+			rect.top = WALK_ANIM * HEIGHT * entityData->height;
 			sprite.setTextureRect(rect);
 		}
-		else if (isRunning && rect.top != RUN * HEIGHT * entityData->height)
+		else if (isRunning && rect.top != RUN_AMIN * HEIGHT * entityData->height)
 		{
-			rect.top = RUN * HEIGHT * entityData->height;
+			rect.top = RUN_AMIN * HEIGHT * entityData->height;
 			sprite.setTextureRect(rect);
 		}
 	}
@@ -200,17 +203,17 @@ E_EntityType Entity::getType()
 	return entityData->type;
 }
 
-Vector2f Entity::getDxy()
+sf::Vector2f Entity::getDxy()
 {
-	return Vector2f(dx, dy);
+	return sf::Vector2f(dx, dy);
 }
 
-Vector2f Entity::getCoordinates()
+sf::Vector2f Entity::getCoordinates()
 {
 	return sprite.getPosition();
 }
 
-string Entity::getTextid()
+std::string Entity::getTextid()
 {
 	return textid;
 }

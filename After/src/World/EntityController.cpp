@@ -6,8 +6,6 @@
 
 #include "EntityController.h"
 #include <iostream>
-using std::cout;
-using std::endl;
 
 EntityController::EntityController(Last& last)
 {
@@ -38,18 +36,18 @@ EntityController::~EntityController()
 	}
 }
 
-Vector2f EntityController::tick(const float& delta, RenderWindow& window, const Vector2f& center)
+sf::Vector2f EntityController::tick(const float& delta, sf::RenderWindow& window, const sf::Vector2f& center)
 {
-	Vector2f res(0, 0);
+	sf::Vector2f res(0, 0);
 	float h, e, w, o, g;
 	static_cast<Last*>(begin->item)->getStats(h, e, w, o, g);
-	cout << "FPS: " << 1000 / delta << endl <<
-		center.x << " " << center.y << endl <<
-		"Health: " << h << endl <<
-		"Energy: " << e << endl <<
-		"Weakness: " << w << endl <<
-		"Oxygen: " << o << endl <<
-		"Hunger: " << g << endl << endl;
+	std::cout << "FPS: " << 1000 / delta << std::endl <<
+		center.x << " " << center.y << std::endl <<
+		"Health: " << h << std::endl <<
+		"Energy: " << e << std::endl <<
+		"Weakness: " << w << std::endl <<
+		"Oxygen: " << o << std::endl <<
+		"Hunger: " << g << std::endl << std::endl;
 	for (Cell* p = begin; p != nullptr; p = p->next)
 	{
 		switch (p->item->getType())
@@ -93,15 +91,15 @@ Vector2f EntityController::tick(const float& delta, RenderWindow& window, const 
 			static_cast<Last*>(p->item)->tick(delta);
 			static_cast<Last*>(p->item)->draw(window);
 
-			Vector2f pos = p->item->getCoordinates();
+			sf::Vector2f pos = p->item->getCoordinates();
 			res.x = (int)pos.x / WIDTH / AREA_WIDTH - center.x;
 			res.y = (int)pos.y / HEIGHT / AREA_HEIGHT - center.y;
 
 			break;
 		}
 		}
-		Vector2f position = p->item->getCoordinates();
-		cout << p->item->getTextid() << " " << (int)p->item->getCoordinates().x / WIDTH << " " << (int)p->item->getCoordinates().y / HEIGHT << endl;
+		sf::Vector2f position = p->item->getCoordinates();
+		std::cout << p->item->getTextid() << " " << (int)p->item->getCoordinates().x / WIDTH << " " << (int)p->item->getCoordinates().y / HEIGHT << std::endl;
 		if (position.x / WIDTH / AREA_WIDTH < center.x - LOAD_DISTANCE ||
 			position.x / WIDTH / AREA_WIDTH > center.x + LOAD_DISTANCE ||
 			position.y / HEIGHT / AREA_HEIGHT < center.y - LOAD_DISTANCE ||

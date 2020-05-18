@@ -6,7 +6,7 @@
 
 #include "Robot.h"
 
-Robot::Robot(const int id, const string textid) : Mob(id, textid)
+Robot::Robot(const int id, const std::string textid) : Mob(id, textid)
 {
 }
 

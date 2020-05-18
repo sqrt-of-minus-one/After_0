@@ -6,7 +6,7 @@
 
 #include "Animal.h"
 
-Animal::Animal(const int id, const string textid) : Mob(id, textid)
+Animal::Animal(const int id, const std::string textid) : Mob(id, textid)
 {
 	animalData = Database::getAnimalData(textid);
 }

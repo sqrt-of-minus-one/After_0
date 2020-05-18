@@ -8,21 +8,17 @@
 #include "../Utilites/Constants.h"
 #include <fstream>
 
-using std::ifstream;
-using std::ofstream;
-using std::endl;
-
-Keyboard::Key S_Controls::forward = Keyboard::W;
-Keyboard::Key S_Controls::back = Keyboard::S;
-Keyboard::Key S_Controls::left = Keyboard::A;
-Keyboard::Key S_Controls::right = Keyboard::D;
-Keyboard::Key S_Controls::run = Keyboard::LShift;
+sf::Keyboard::Key S_Controls::forward = sf::Keyboard::W;
+sf::Keyboard::Key S_Controls::back = sf::Keyboard::S;
+sf::Keyboard::Key S_Controls::left = sf::Keyboard::A;
+sf::Keyboard::Key S_Controls::right = sf::Keyboard::D;
+sf::Keyboard::Key S_Controls::run = sf::Keyboard::LShift;
 bool S_Controls::invertZoom = false;
 bool S_Controls::invertMouseButtons = false;
 
 void S_Controls::load()
 {
-	ifstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
+	std::ifstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
 	if (!file.is_open())
 	{
 		defaults();
@@ -33,19 +29,19 @@ void S_Controls::load()
 		int in;
 
 		file >> in;
-		forward = static_cast<Keyboard::Key>(in);
+		forward = static_cast<sf::Keyboard::Key>(in);
 
 		file >> in;
-		back = static_cast<Keyboard::Key>(in);
+		back = static_cast<sf::Keyboard::Key>(in);
 
 		file >> in;
-		left = static_cast<Keyboard::Key>(in);
+		left = static_cast<sf::Keyboard::Key>(in);
 
 		file >> in;
-		right = static_cast<Keyboard::Key>(in);
+		right = static_cast<sf::Keyboard::Key>(in);
 
 		file >> in;
-		run = static_cast<Keyboard::Key>(in);
+		run = static_cast<sf::Keyboard::Key>(in);
 
 		file >> invertZoom;
 
@@ -57,18 +53,18 @@ void S_Controls::load()
 
 void S_Controls::defaults()
 {
-	forward = Keyboard::W;
-	back = Keyboard::S;
-	left = Keyboard::A;
-	right = Keyboard::D;
-	run = Keyboard::LShift;
+	forward = sf::Keyboard::W;
+	back = sf::Keyboard::S;
+	left = sf::Keyboard::A;
+	right = sf::Keyboard::D;
+	run = sf::Keyboard::LShift;
 	invertZoom = false;
 	invertMouseButtons = false;
 }
 
 void S_Controls::save()
 {
-	ofstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
+	std::ofstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
 
 	if (!file.is_open())
 	{
@@ -76,12 +72,12 @@ void S_Controls::save()
 	}
 
 	file <<
-		static_cast<int>(forward) << endl <<
-		static_cast<int>(back) << endl <<
-		static_cast<int>(left) << endl <<
-		static_cast<int>(right) << endl <<
-		static_cast<int>(run) << endl <<
-		invertZoom << endl <<
+		static_cast<int>(forward) << std::endl <<
+		static_cast<int>(back) << std::endl <<
+		static_cast<int>(left) << std::endl <<
+		static_cast<int>(right) << std::endl <<
+		static_cast<int>(run) << std::endl <<
+		invertZoom << std::endl <<
 		invertMouseButtons;
 
 	file.close();

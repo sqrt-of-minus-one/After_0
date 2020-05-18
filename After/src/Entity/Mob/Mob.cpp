@@ -6,9 +6,14 @@
 
 #include "Mob.h"
 
-Mob::Mob(const int id, const string textid) : Entity(id, textid)
+Mob::Mob(const int id, const std::string textid) : Entity(id, textid)
 {
 	mobData = Database::getMobData(textid);
+}
+
+Mob::~Mob()
+{
+	Database::removeMob(id);
 }
 
 void Mob::attackMelee(Entity* attacked)

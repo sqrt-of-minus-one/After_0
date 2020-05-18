@@ -12,7 +12,7 @@ WorldController::WorldController(sf::RenderWindow& window)
 	view = window.getView();
 	entityController = new EntityController(*player);
 	entityController->add(new Animal(1, "cow"));
-	Vector2f pos = player->getCoordinates();
+	sf::Vector2f pos = player->getCoordinates();
 	world = new World(pos.x, pos.y);
 }
 
@@ -24,8 +24,8 @@ WorldController::~WorldController()
 
 void WorldController::tick(const float& delta, sf::RenderWindow& window)
 {
-	Vector2f move = entityController->tick(delta, window, world->getCenter());
-	if (move != Vector2f(0, 0))
+	sf::Vector2f move = entityController->tick(delta, window, world->getCenter());
+	if (move != sf::Vector2f(0, 0))
 	{
 		world->moveWorld(move.x, move.y);
 	}

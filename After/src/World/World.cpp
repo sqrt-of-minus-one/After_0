@@ -8,8 +8,6 @@
 #include "../Utilites/Log.h"
 #include <stdexcept>
 
-using std::out_of_range;
-
 AreaLinkedList::AreaLinkedList()
 {
 	begin = nullptr;
@@ -122,7 +120,7 @@ Area* AreaLinkedList::get(const int& index)
 {
 	if (index < 0 || index >= size)
 	{
-		throw out_of_range("Index is out of range");
+		throw std::out_of_range("Index is out of range");
 	}
 	else
 	{
@@ -288,7 +286,7 @@ AreaLinkedList* AreasLinkedList::get(const int& index)
 {
 	if (index < 0 || index >= size)
 	{
-		throw out_of_range("Index is out of range");
+		throw std::out_of_range("Index is out of range");
 	}
 	else
 	{
@@ -414,7 +412,7 @@ void World::moveWorld(const float& x, const float& y)
 	}
 }
 
-Vector2f World::getCenter()
+sf::Vector2f World::getCenter()
 {
-	return Vector2f(centerX, centerY);
+	return sf::Vector2f(centerX, centerY);
 }

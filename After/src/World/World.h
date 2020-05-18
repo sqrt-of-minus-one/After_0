@@ -85,5 +85,5 @@ public:
 
 	void moveWorld(const float& x, const float& y);
 
-	Vector2f getCenter();
+	sf::Vector2f getCenter();
 };

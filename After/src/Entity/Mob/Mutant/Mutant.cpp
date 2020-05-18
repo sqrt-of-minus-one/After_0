@@ -6,7 +6,7 @@
 
 #include "Mutant.h"
 
-Mutant::Mutant(const int id, const string textid) : Mob(id, textid)
+Mutant::Mutant(const int id, const std::string textid) : Mob(id, textid)
 {
 }
 

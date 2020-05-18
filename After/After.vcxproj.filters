@@ -48,6 +48,9 @@
     <Filter Include="Source Files\src\World">
       <UniqueIdentifier>{3867fede-c9d9-437c-ad68-0411e07d193b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\src\Object">
+      <UniqueIdentifier>{c6585824-63f0-4ab6-954f-2d1d42a16952}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilites\Database\Database.cpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="src\World\EntityController.cpp">
       <Filter>Source Files\src\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object\Object.cpp">
+      <Filter>Source Files\src\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="src\World\EntityController.h">
       <Filter>Source Files\src\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object\Object.h">
+      <Filter>Source Files\src\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
