@@ -340,7 +340,7 @@ int AreasLinkedList::getIteratorIndex()
 }
 
 
-World::World(const int& x, const int& y)
+World::World(const int& x, const int& y, int& loading)
 {
 	centerX = x / WIDTH / AREA_WIDTH;
 	centerY = y / HEIGHT / AREA_HEIGHT;
@@ -348,9 +348,11 @@ World::World(const int& x, const int& y)
 	for (int i = centerX - LOAD_DISTANCE; i <= centerX + LOAD_DISTANCE; i++)
 	{
 		AreaLinkedList* list = new AreaLinkedList;
+
 		for (int j = centerY - LOAD_DISTANCE; j <= centerY + LOAD_DISTANCE; j++)
 		{
 			list->addLast(new Area(i, j));
+			loading++;
 		}
 		areas->addLast(list);
 	}

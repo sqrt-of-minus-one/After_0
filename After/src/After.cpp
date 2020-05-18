@@ -9,7 +9,8 @@
 #include "World/WorldController.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Object/Object.h"
+#include <thread>
+#include <mutex>
 
 void check_debug()
 {
@@ -90,8 +91,55 @@ int main()
 	//window.setFramerateLimit(60);
 	int zoom = 1;
 
-	WorldController controller(window);
+	std::mutex windowMtx;
+	int loading = 0;
 
+	WorldController* controller;
+
+	std::thread loadTR([&controller, &window, &loading, &windowMtx]()
+	{
+		controller = new WorldController(window, windowMtx, loading);
+		loading = -1;
+	});
+	sf::Text text;
+	sf::Font font;
+	font.loadFromFile("Times New Roman.ttf");
+	text.setFont(font);
+
+	while (window.isOpen() && loading > -1)
+	{
+		sf::Event event;
+
+		windowMtx.lock();
+		while (window.pollEvent(event))
+		{
+			windowMtx.unlock();
+			if (event.type == sf::Event::Closed)
+			{
+				text.setString("Closing, please wait...");
+				windowMtx.lock();
+				window.clear();
+				window.draw(text);
+				window.display();
+				windowMtx.unlock();
+				loadTR.join();
+				window.close();
+				Log::i(I_CLOSE);
+			}
+			text.setString("Loading... (" + std::to_string(100 * loading / ((2 * LOAD_DISTANCE + 1) * (2 * LOAD_DISTANCE + 1))) + "%)");
+			windowMtx.lock();
+			window.clear();
+			window.draw(text);
+			window.display();
+		}
+		windowMtx.unlock();
+	}
+
+	if (loadTR.joinable())
+	{
+		loadTR.join();
+	}
+	
 	sf::Clock clock;
 	try
 	{
@@ -114,7 +162,7 @@ int main()
 					if (!(zoom == MAX_ZOOM && wheelDelta > 0 || zoom == MIN_ZOOM && wheelDelta < 0))
 					{
 						zoom += wheelDelta;
-						controller.zoom(wheelDelta > 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
+						controller->zoom(wheelDelta > 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
 					}
 				}
 			}
@@ -122,7 +170,7 @@ int main()
 			std::system("cls");
 			window.clear();
 
-			controller.tick(delta, window);
+			controller->tick(delta, window);
 
 			//Tmp
 			sf::CircleShape c[5][5];
@@ -145,4 +193,9 @@ int main()
 	{
 		std::system("log.txt");
 	}
+	if (controller != nullptr)
+	{
+		delete controller;
+	}
+	return 0;
 }

@@ -266,7 +266,7 @@ void Database::removeMob(const int id)
 	mobLoaded[id]--;
 	if (mobLoaded[id] == 0)
 	{
-		delete mobData[id]->drop;
+		delete[] mobData[id]->drop;
 		delete mobData[id];
 		mobData[id] = nullptr;
 	}
@@ -305,7 +305,7 @@ void Database::removeObject(const int id)
 	objectLoaded[id]--;
 	if (objectLoaded[id] == 0)
 	{
-		delete objectData[id]->drop;
+		delete[] objectData[id]->drop;
 		delete objectData[id];
 		objectData[id] = nullptr;
 	}

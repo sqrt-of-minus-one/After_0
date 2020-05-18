@@ -17,7 +17,7 @@ protected:
 	sf::View view;
 	Last* player;
 public:
-	WorldController(sf::RenderWindow& window);
+	WorldController(sf::RenderWindow& window, std::mutex& windowMtx, int& loading);
 	~WorldController();
 
 	void tick(const float& delta, sf::RenderWindow& window);

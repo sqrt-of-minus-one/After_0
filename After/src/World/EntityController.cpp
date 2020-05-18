@@ -95,7 +95,7 @@ sf::Vector2f EntityController::tick(const float& delta, sf::RenderWindow& window
 			res.x = (int)pos.x / WIDTH / AREA_WIDTH - center.x;
 			res.y = (int)pos.y / HEIGHT / AREA_HEIGHT - center.y;
 
-			break;
+			continue;
 		}
 		}
 		sf::Vector2f position = p->item->getCoordinates();

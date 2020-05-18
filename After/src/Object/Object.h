@@ -13,11 +13,12 @@ class Object
 protected:
 	int id; //ID объекта
 	std::string textid; //Текстовый идентификатор
-	DBS_ObjectData objectData; //Данные об объекте
+	DBS_ObjectData* objectData; //Данные об объекте
 
 	float health; //Прочность объекта
 public:
 	Object(const int id, const std::string textid);
+	~Object();
 
 	void doBreake(/*const Item* by*/); //Разрушение
 	void resetBreake(); //Окончание разрушения

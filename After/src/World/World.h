@@ -7,6 +7,8 @@
 #pragma once
 
 #include "Area.h"
+#include <thread>
+#include <mutex>
 
 //Next two classes are very bad! But they`re working! I hope...
 class AreaLinkedList
@@ -80,7 +82,7 @@ protected:
 	int centerX;
 	int centerY;
 public:
-	World(const int& x, const int& y);
+	World(const int& x, const int& y, int& loading);
 	~World();
 
 	void moveWorld(const float& x, const float& y);

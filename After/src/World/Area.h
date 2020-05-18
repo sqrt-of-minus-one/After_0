@@ -7,11 +7,12 @@
 #pragma once
 
 #include "../Entity/Entity.h"
+#include "../Object/Object.h"
 
 class Area
 {
 protected:
-//	Object* objects[AREA_WIDTH][AREA_HEIGHT][WORLD_HEIGHT];
+	Object* objects[AREA_WIDTH][AREA_HEIGHT][WORLD_HEIGHT];
 
 	int x;
 	int y;

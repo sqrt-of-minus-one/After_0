@@ -6,14 +6,18 @@
 
 #include "WorldController.h"
 
-WorldController::WorldController(sf::RenderWindow& window)
+WorldController::WorldController(sf::RenderWindow& window, std::mutex& windowMtx, int& loading)
 {
 	player = new Last;
+	
+	windowMtx.lock();
 	view = window.getView();
+	windowMtx.unlock();
+
 	entityController = new EntityController(*player);
 	entityController->add(new Animal(1, "cow"));
 	sf::Vector2f pos = player->getCoordinates();
-	world = new World(pos.x, pos.y);
+	world = new World(pos.x, pos.y, loading);
 }
 
 WorldController::~WorldController()

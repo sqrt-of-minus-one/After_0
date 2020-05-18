@@ -59,5 +59,6 @@ E_ObjectType stoObjectType(const std::string& str)
 	else if (str == "Wood")		return WOOD_OBJ;
 	else if (str == "Dirt")		return DIRT_OBJ;
 	else if (str == "Glass")	return GLASS_OBJ;
+	else if (str == "Air")		return AIR_OBJ;
 	else						return OTHER_OBJ;
 }
