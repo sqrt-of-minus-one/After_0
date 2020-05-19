@@ -14,135 +14,126 @@
 
 void check_debug()
 {
-	std::ifstream file(TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+	std::ifstream file(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_1x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x1" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG_FILE + "_1x1" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_1x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_1x2" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG_FILE + "_1x2" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_2x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x2" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG_FILE + "_2x2" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_2x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG + "_2x1" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + DEBUG_FILE + "_2x1" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + OBJECT + DEBUG_FILE + "_1x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x1" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG_FILE + "_1x1" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + OBJECT + DEBUG_FILE + "_1x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_1x2" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG_FILE + "_1x2" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + OBJECT + DEBUG_FILE + "_2x2" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x2" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG_FILE + "_2x2" + TEXTURES_EXT);
 	}
 	file.close();
 
-	file.open(TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
+	file.open(TEXTURES_PATH + OBJECT + DEBUG_FILE + "_2x1" + TEXTURES_EXT);
 	if (!file.is_open())
 	{
-		Log::e(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
-		throw std::runtime_error(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG + "_2x1" + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + OBJECT + DEBUG_FILE + "_2x1" + TEXTURES_EXT);
 	}
 	file.close();
 }
 
 int main()
 {
-	srand(time(NULL));
-	Log::clear();
-	Log::i(I_START);
-	check_debug();
-
-	sf::RenderWindow window(sf::VideoMode(800, 450), "After");
-	//window.setVerticalSyncEnabled(true);
-	//window.setFramerateLimit(60);
-	int zoom = 1;
-
-	std::mutex windowMtx;
-	int loading = 0;
-
-	WorldController* controller;
-
-	std::thread loadTR([&controller, &window, &loading, &windowMtx]()
+	try
 	{
-		controller = new WorldController(window, windowMtx, loading);
-		loading = -1;
-	});
-	sf::Text text;
-	sf::Font font;
-	font.loadFromFile("Times New Roman.ttf");
-	text.setFont(font);
+		srand(time(NULL));
+		Log::clear();
+		Log::debugEnable();
+		Log_i(I_START);
+		check_debug();
 
-	while (window.isOpen() && loading > -1)
-	{
-		sf::Event event;
+		sf::RenderWindow window(sf::VideoMode(800, 450), "After");
+		//window.setVerticalSyncEnabled(true);
+		//window.setFramerateLimit(60);
+		int zoom = 1;
 
-		windowMtx.lock();
-		while (window.pollEvent(event))
+		std::mutex windowMtx;
+		int loading = 0;
+
+		WorldController* controller;
+
+		std::thread loadTR([&controller, &window, &loading, &windowMtx]()
 		{
-			windowMtx.unlock();
-			if (event.type == sf::Event::Closed)
+			controller = new WorldController(window, windowMtx, loading);
+			loading = -1;
+		});
+		sf::Text text;
+		sf::Font font;
+		font.loadFromFile("Times New Roman.ttf");
+		text.setFont(font);
+
+		while (window.isOpen() && loading > -1)
+		{
+			sf::Event event;
+
+			windowMtx.lock();
+			while (window.pollEvent(event))
 			{
-				text.setString("Closing, please wait...");
-				windowMtx.lock();
-				window.clear();
-				window.draw(text);
-				window.display();
 				windowMtx.unlock();
-				loadTR.join();
-				window.close();
-				Log::i(I_CLOSE);
+				if (event.type == sf::Event::Closed)
+				{
+					windowMtx.lock();
+					window.close();
+					windowMtx.unlock();
+					Log_i(I_CLOSE_BEFORE_LOAD);
+					loadTR.join();
+					window.close();
+					Log_i(I_CLOSE);
+				}
+				windowMtx.lock();
 			}
 			text.setString("Loading... (" + std::to_string(100 * loading / ((2 * LOAD_DISTANCE + 1) * (2 * LOAD_DISTANCE + 1))) + "%)");
-			windowMtx.lock();
 			window.clear();
 			window.draw(text);
 			window.display();
+			windowMtx.unlock();
 		}
-		windowMtx.unlock();
-	}
 
-	if (loadTR.joinable())
-	{
-		loadTR.join();
-	}
+		if (loadTR.joinable())
+		{
+			loadTR.join();
+		}
 	
-	sf::Clock clock;
-	try
-	{
+		sf::Clock clock;
 		while (window.isOpen())
 		{
 			float delta = clock.getElapsedTime().asMilliseconds();
@@ -154,7 +145,7 @@ int main()
 				if (event.type == sf::Event::Closed)
 				{
 					window.close();
-					Log::i(I_CLOSE);
+					Log_i(I_CLOSE);
 				}
 				if (event.type == sf::Event::MouseWheelMoved)
 				{
@@ -188,14 +179,15 @@ int main()
 			window.display();
 			
 		}
+		if (controller != nullptr)
+		{
+			delete controller;
+		}
 	}
 	catch (std::exception e)
 	{
+		std::cout << ERROR << e.what() << std::endl;
 		std::system("log.txt");
-	}
-	if (controller != nullptr)
-	{
-		delete controller;
 	}
 	return 0;
 }

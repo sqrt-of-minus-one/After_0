@@ -5,6 +5,7 @@
 ////////////////////////////////////////
 
 #include "Area.h"
+#include "../Utilites/Log.h"
 
 Area::Area(const int& x, const int& y)
 {
@@ -20,6 +21,7 @@ Area::Area(const int& x, const int& y)
 			}
 		}
 	}
+	Log_d(D_AREA_LOADED + std::to_string(x) + ", " + std::to_string(y));
 	load();
 }
 
@@ -44,4 +46,5 @@ void Area::unload()
 			}
 		}
 	}
+	Log_d(D_AREA_UNLOADED + std::to_string(x) + ", " + std::to_string(y));
 }

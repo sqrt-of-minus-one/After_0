@@ -356,7 +356,7 @@ World::World(const int& x, const int& y, int& loading)
 		}
 		areas->addLast(list);
 	}
-	Log::i(I_WORLD_CREATE);
+	Log_i(I_WORLD_CREATE);
 }
 
 World::~World()

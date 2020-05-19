@@ -18,7 +18,7 @@ bool S_Controls::invertMouseButtons = false;
 
 void S_Controls::load()
 {
-	std::ifstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
+	std::ifstream file(OPTIONS_PATH + CONTROLS_FILE + DATA_EXT);
 	if (!file.is_open())
 	{
 		defaults();
@@ -64,7 +64,7 @@ void S_Controls::defaults()
 
 void S_Controls::save()
 {
-	std::ofstream file(OPTIONS_PATH + CONTROLS + DATA_EXT);
+	std::ofstream file(OPTIONS_PATH + CONTROLS_FILE + DATA_EXT);
 
 	if (!file.is_open())
 	{

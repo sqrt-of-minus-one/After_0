@@ -60,7 +60,7 @@ void Database::loadEntity(const int id, const std::string textid, std::ifstream&
 		std::string path = SOUNDS_PATH + ENTITY + textid + "_" + "damage" + "_" + std::to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(W_NO_FILE + path);
+			Log_w(W_NO_FILE + path);
 		}
 		entityData[id]->damageSounds[i].setBuffer(*buffer);
 	}
@@ -70,7 +70,7 @@ void Database::loadEntity(const int id, const std::string textid, std::ifstream&
 		std::string path = SOUNDS_PATH + ENTITY + textid + "_" + "death" + "_" + std::to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(W_NO_FILE + path);
+			Log_w(W_NO_FILE + path);
 		}
 		entityData[id]->deathSounds[i].setBuffer(*buffer);
 	}
@@ -80,7 +80,7 @@ void Database::loadEntity(const int id, const std::string textid, std::ifstream&
 		std::string path = SOUNDS_PATH + ENTITY + textid + "_" + "entity" + "_" + std::to_string(i) + SOUNDS_EXT;
 		if (!buffer->loadFromFile(path))
 		{
-			Log::w(W_NO_FILE + path);
+			Log_w(W_NO_FILE + path);
 		}
 		entityData[id]->entitySounds[i].setBuffer(*buffer);
 	}
@@ -90,43 +90,43 @@ void Database::loadEntity(const int id, const std::string textid, std::ifstream&
 
 	if (!entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT);
-		entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_f" + TEXTURES_EXT);
+		entityData[id]->texture_f.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT);
-		entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fr" + TEXTURES_EXT);
+		entityData[id]->texture_fr.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT);
-		entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_r" + TEXTURES_EXT);
+		entityData[id]->texture_r.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT);
-		entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_br" + TEXTURES_EXT);
+		entityData[id]->texture_br.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT);
-		entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_b" + TEXTURES_EXT);
+		entityData[id]->texture_b.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT);
-		entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_bl" + TEXTURES_EXT);
+		entityData[id]->texture_bl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT);
-		entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_l" + TEXTURES_EXT);
+		entityData[id]->texture_l.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 	if (!entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT);
-		entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + ENTITY + textid + "_fl" + TEXTURES_EXT);
+		entityData[id]->texture_fl.loadFromFile(TEXTURES_PATH + ENTITY + DEBUG_FILE + "_" + std::to_string(entityData[id]->height) + "x" + std::to_string(entityData[id]->width) + TEXTURES_EXT);
 	}
 
 	entityLoaded[id]++;
@@ -223,8 +223,8 @@ void Database::loadObject(const int id, const std::string textid, std::ifstream&
 
 	if (!objectData[id]->texture.loadFromFile(TEXTURES_PATH + OBJECT + textid + TEXTURES_EXT))
 	{
-		Log::w(W_NO_FILE + TEXTURES_PATH + OBJECT + textid + TEXTURES_EXT);
-		objectData[id]->texture.loadFromFile(TEXTURES_PATH + OBJECT + DEBUG + "_" + std::to_string(objectData[id]->height) + "x" + std::to_string(objectData[id]->width) + TEXTURES_EXT);
+		Log_w(W_NO_FILE + TEXTURES_PATH + OBJECT + textid + TEXTURES_EXT);
+		objectData[id]->texture.loadFromFile(TEXTURES_PATH + OBJECT + DEBUG_FILE + "_" + std::to_string(objectData[id]->height) + "x" + std::to_string(objectData[id]->width) + TEXTURES_EXT);
 	}
 
 	objectLoaded[id]++;
@@ -320,7 +320,7 @@ DBS_EntityData* Database::getEntityData(const std::string textid)
 	if (!file.is_open())
 	{
 		std::string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + textid + DATA_EXT + "\"";
-		Log::e(error);
+		Log_e(error);
 		throw std::runtime_error(error);
 	}
 	file >> useless >> id;
@@ -340,7 +340,7 @@ DBS_MobData* Database::getMobData(const std::string textid)
 	if (!file.is_open())
 	{
 		std::string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + textid + DATA_EXT + "\"";
-		Log::e(error);
+		Log_e(error);
 		throw std::runtime_error(error);
 	}
 	file >> useless >> id;
@@ -360,7 +360,7 @@ DBS_AnimalData* Database::getAnimalData(const std::string textid)
 	if (!file.is_open())
 	{
 		std::string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + textid + DATA_EXT + "\"";
-		Log::e(error);
+		Log_e(error);
 		throw std::runtime_error(error);
 	}
 	file >> useless >> id;
@@ -380,7 +380,7 @@ DBS_WolfData* Database::getWolfData()
 		if (!file.is_open())
 		{
 			std::string error = "Couldn`t find file \"" + DATA_PATH + ENTITY + MOB + ANIMAL + EXTRA + "wolf" + DATA_EXT + "\"";
-			Log::e(error);
+			Log_e(error);
 			throw std::runtime_error(error);
 		}
 		loadWolf(file);
@@ -397,7 +397,7 @@ DBS_ObjectData* Database::getObjectData(const std::string textid)
 	if (!file.is_open())
 	{
 		std::string error = "Couldn`t find file \"" + DATA_PATH + OBJECT + textid + DATA_EXT + "\"";
-		Log::e(error);
+		Log_e(error);
 		throw std::runtime_error(error);
 	}
 	file >> useless >> id;
